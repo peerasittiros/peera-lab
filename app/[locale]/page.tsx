@@ -1,0 +1,102 @@
+import { notFound } from 'next/navigation';
+import type { Metadata } from 'next';
+import { JsonLd } from '@/components/seo/JsonLd';
+import { pageMetadata, personJsonLd } from '@/lib/seo';
+import { getFeaturedProduct, getProducts, getSite } from '@/lib/content';
+import { isLocale, t, type Locale } from '@/lib/i18n';
+import { footerLinks, navItems } from '@/lib/nav';
+import { SiteNav } from '@/components/navigation/SiteNav';
+import { Hero } from '@/components/layout/Hero';
+import { SectionHeader } from '@/components/layout/SectionHeader';
+import { ContactBlock } from '@/components/layout/ContactBlock';
+import { Footer } from '@/components/layout/Footer';
+import { FeaturedProduct } from '@/components/products/FeaturedProduct';
+import { ProductGrid } from '@/components/products/ProductGrid';
+
+/**
+ * Homepage: Nav → Hero → 01 Featured → 02 Product Lab → 03 Contact → Footer.
+ * Personal details (name, role, bio) appear only in the Contact band.
+ * The Hero is the page's only h1. Every section opens with SectionHeader as an h2.
+ */
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale: raw } = await params;
+  if (!isLocale(raw)) notFound();
+  const site = getSite();
+  const title = t(site.hero.title, raw);
+  return pageMetadata(raw, `/${raw}`, title, t(site.hero.lead, raw), 'absolute');
+}
+
+export default async function Page({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale: raw } = await params;
+  if (!isLocale(raw)) notFound();
+  const locale: Locale = raw;
+
+  const site = getSite();
+  const products = getProducts();
+  const featured = getFeaturedProduct();
+  const lab = products.filter((product) => product.slug !== featured.slug);
+  const year = new Date().getFullYear();
+  const brand = site.name.split(' ')[0];
+
+  return (
+    <>
+      <JsonLd data={personJsonLd(locale)} />
+      <SiteNav
+        locale={locale}
+        items={navItems(site, locale, true)}
+        homeHref={`/${locale}`}
+        name={brand}
+        localeHrefs={{ en: '/en', th: '/th' }}
+      />
+      <main>
+        <Hero
+          locale={locale}
+          title={site.hero.title}
+          lead={site.hero.lead}
+          actions={site.hero.actions.map((a, i) => ({ label: a.label, href: a.href, variant: i ? 'secondary' : 'primary' }))}
+          building={{
+            label: site.home.building,
+            items: products.map((product) => ({
+              name: product.title,
+              status: product.status,
+              href: `/${locale}/products/${product.slug}`,
+            })),
+          }}
+        />
+
+        <div className="pl-home-section pl-reveal" id="featured">
+          <FeaturedProduct product={featured} locale={locale} />
+        </div>
+
+        <div className="pl-home-section pl-reveal" id="products">
+          <SectionHeader
+            locale={locale}
+            title={site.home.lab.title}
+            lead={site.home.lab.lead}
+            action={{ label: site.home.lab.all, href: `/${locale}/products` }}
+          />
+          <ProductGrid products={lab} locale={locale} startIndex={2} />
+        </div>
+
+        <ContactBlock
+          locale={locale}
+          title={site.contact.title}
+          lead={site.contact.lead}
+          person={site.contact.person}
+          email={site.contact.email}
+          phone={site.contact.phone}
+          actions={site.contact.actions}
+          id="contact"
+        />
+      </main>
+      <Footer
+        locale={locale}
+        name={brand}
+        homeHref={`/${locale}`}
+        links={footerLinks(site, locale, true)}
+        owner={site.name}
+        year={year}
+      />
+    </>
+  );
+}

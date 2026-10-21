@@ -1,0 +1,13 @@
+{
+  "slug": "tableside",
+  "title": { "en": "Tableside", "th": "Tableside" },
+  "tagline": {
+    "en": "Daily sales and food cost for a single-branch restaurant.",
+    "th": "ยอดขายรายวันและต้นทุนอาหารสำหรับร้านสาขาเดียว"
+  },
+  "category": { "en": "Restaurant", "th": "ร้านอาหาร" },
+  "status": "coming-soon",
+  "order": 4,
+  "technologies": ["Next.js", "TypeScript", "Charts", "PostgreSQL"],
+  "preview": "dashboard"
+}

@@ -1,0 +1,23 @@
+{
+  "slug": "clinic-desk",
+  "title": {
+    "en": "Clinic Desk",
+    "th": "Clinic Desk"
+  },
+  "tagline": {
+    "en": "Appointments and the patient queue for small clinics.",
+    "th": "ระบบนัดหมายและคิวผู้ป่วยสำหรับคลินิกขนาดเล็ก"
+  },
+  "category": {
+    "en": "Clinic",
+    "th": "คลินิก"
+  },
+  "status": "prototype",
+  "order": 2,
+  "technologies": [
+    "Next.js",
+    "TypeScript",
+    "Prisma"
+  ],
+  "preview": "calendar"
+}

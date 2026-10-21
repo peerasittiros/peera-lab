@@ -1,0 +1,137 @@
+{
+  "slug": "stockline",
+  "featured": true,
+  "title": {
+    "en": "Stockline",
+    "th": "Stockline"
+  },
+  "tagline": {
+    "en": "Inventory that small shops can actually keep up to date.",
+    "th": "ระบบสต็อกที่ร้านค้าเล็ก ๆ อัปเดตได้จริงทุกวัน"
+  },
+  "category": {
+    "en": "Inventory",
+    "th": "ระบบสต็อก"
+  },
+  "status": "in-development",
+  "order": 1,
+  "startedAt": "2026-03-01",
+  "problem": {
+    "en": "SME owners track stock in spreadsheets and LINE chats, so counts drift and reorders come late.",
+    "th": "เจ้าของกิจการ SME จดสต็อกในสเปรดชีตและแชต LINE ตัวเลขจึงคลาดเคลื่อน และสั่งของเข้าช้า"
+  },
+  "value": {
+    "en": "One screen for stock in, stock out and what to reorder this week.",
+    "th": "หน้าจอเดียวสำหรับรับเข้า เบิกออก และรายการที่ต้องสั่งเพิ่มสัปดาห์นี้"
+  },
+  "technologies": [
+    "Next.js",
+    "TypeScript",
+    "PostgreSQL",
+    "Tailwind CSS"
+  ],
+  "preview": "table",
+  "sections": [
+    {
+      "type": "overview",
+      "body": {
+        "en": "Stockline is a small inventory app for shops with one to three people. It keeps stock in, stock out and reorders in one place, and works on the phone the owner already carries.",
+        "th": "Stockline เป็นแอปจัดการสต็อกขนาดเล็กสำหรับร้านที่มีคนดูแลหนึ่งถึงสามคน รวมการรับของเข้า เบิกของออก และการสั่งซื้อเพิ่มไว้ในที่เดียว ใช้งานบนมือถือเครื่องเดิมที่เจ้าของร้านถืออยู่แล้วได้เลย"
+      }
+    },
+    {
+      "type": "features",
+      "items": [
+        {
+          "title": {
+            "en": "Count in seconds",
+            "th": "นับสต็อกได้ในไม่กี่วินาที"
+          },
+          "body": {
+            "en": "Scan a barcode or tap an item, then enter the change. No forms to fill.",
+            "th": "สแกนบาร์โค้ดหรือแตะที่สินค้า แล้วใส่จำนวนที่เปลี่ยน ไม่ต้องกรอกฟอร์มยาว ๆ"
+          }
+        },
+        {
+          "title": {
+            "en": "Reorder list",
+            "th": "รายการที่ต้องสั่งเพิ่ม"
+          },
+          "body": {
+            "en": "Each item has a minimum. Anything below it shows up on this week's list.",
+            "th": "สินค้าแต่ละตัวมีจำนวนขั้นต่ำ ตัวไหนต่ำกว่านั้นจะขึ้นในรายการสั่งของสัปดาห์นี้ทันที"
+          }
+        },
+        {
+          "title": {
+            "en": "History you can trust",
+            "th": "ประวัติที่ตรวจสอบได้"
+          },
+          "body": {
+            "en": "Every change records who made it and when, so counts can be checked later.",
+            "th": "ทุกการเปลี่ยนแปลงบันทึกว่าใครทำและทำเมื่อไร ย้อนกลับมาตรวจตัวเลขได้เสมอ"
+          }
+        }
+      ]
+    },
+    {
+      "type": "how-it-works",
+      "steps": [
+        {
+          "title": {
+            "en": "Add your items",
+            "th": "เพิ่มรายการสินค้า"
+          },
+          "body": {
+            "en": "Import a spreadsheet or add items one by one.",
+            "th": "นำเข้าจากสเปรดชีตเดิม หรือเพิ่มทีละรายการก็ได้"
+          }
+        },
+        {
+          "title": {
+            "en": "Record each change",
+            "th": "บันทึกทุกครั้งที่ของเข้าออก"
+          },
+          "body": {
+            "en": "Stock in when goods arrive, stock out when they sell or get used.",
+            "th": "บันทึกรับเข้าเมื่อของมาถึง และเบิกออกเมื่อขายหรือนำไปใช้"
+          }
+        },
+        {
+          "title": {
+            "en": "Order what is low",
+            "th": "สั่งของที่ใกล้หมด"
+          },
+          "body": {
+            "en": "Open the reorder list and send it to your supplier.",
+            "th": "เปิดรายการที่ต้องสั่งเพิ่ม แล้วส่งให้ผู้ขายได้เลย"
+          }
+        }
+      ]
+    },
+    {
+      "type": "status",
+      "body": {
+        "en": "I am building the first version now. The stock screens work; the reorder list and import are next.",
+        "th": "ตอนนี้ผมกำลังสร้างเวอร์ชันแรกอยู่ หน้าจอรับเข้าและเบิกออกใช้งานได้แล้ว ส่วนรายการสั่งเพิ่มและการนำเข้าข้อมูลคือสิ่งที่จะทำต่อ"
+      }
+    },
+    {
+      "type": "roadmap",
+      "items": [
+        {
+          "en": "Reorder list with supplier contacts",
+          "th": "รายการสั่งของพร้อมช่องทางติดต่อผู้ขาย"
+        },
+        {
+          "en": "Import from Excel and Google Sheets",
+          "th": "นำเข้าข้อมูลจาก Excel และ Google Sheets"
+        },
+        {
+          "en": "Send the reorder list to LINE",
+          "th": "ส่งรายการสั่งของเข้า LINE"
+        }
+      ]
+    }
+  ]
+}

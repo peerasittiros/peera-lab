@@ -1,0 +1,49 @@
+<!-- @dsCard height=320 -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Peera Lab</title>
+<style>
+  html, body { margin:0; height:100%; }
+  body { background:var(--surface); color:var(--ink); font-family:var(--font-sans); overflow:hidden; }
+  .cover { position:relative; height:320px; overflow:hidden; }
+  .art { position:absolute; top:0; left:480px; width:480px; height:320px; overflow:hidden; }
+  .art svg { display:block; width:480px; height:320px; }
+  .slab { fill:var(--inverse-surface); }
+  .cut { fill:var(--surface); }
+  .acc { fill:var(--accent); }
+  .blue { fill:var(--blueprint); }
+  .tint { fill:var(--line); }
+  .blk { rx:var(--radius-md); }
+  .sm { rx:var(--radius-sm); }
+  .words { position:absolute; left:var(--space-6); bottom:var(--space-6); max-width:440px; }
+  .name { margin:0; font-family:var(--font-display); font-size:108px; line-height:.95; font-weight:500; letter-spacing:-.03em; color:var(--ink); }
+  .name span { color:var(--accent); font-weight:400; }
+  .tag { margin:var(--space-3) 0 0 4px; font-size:14px; line-height:20px; color:var(--ink-muted); }
+</style>
+</head>
+<body>
+<div class="cover">
+<div class="art" aria-hidden="true">
+<svg viewBox="0 0 480 320" width="480" height="320">
+<!--
+  blocks      inverse-surface slab 240×328 bled off the top (the lab's dark band) · accent 224×192 bleeding right (the one vermilion CTA) · blueprint 96×96 · line tint 112×96 — ≈40% of 960×320
+  arrangement one tall slab with satellites; satellites share a top line, accent sits under them on a space-4 gutter
+  pattern     plus grid cut from the slab in surface, from "precise, technical, mono metadata, 4px base": 6×8 pluses at a space-6 pitch, like a cutting mat / blueprint grid
+  scales      gutters space-4; pitch space-6 (32); corners radius-md on blocks, radius-sm on the blueprint chip
+-->
+<rect class="slab blk" x="16" y="-8" width="240" height="312" rx="6"/>
+<rect class="cut" x="44" y="31" width="8" height="2"/><rect class="cut" x="47" y="28" width="2" height="8"/><rect class="cut" x="44" y="63" width="8" height="2"/><rect class="cut" x="47" y="60" width="2" height="8"/><rect class="cut" x="44" y="95" width="8" height="2"/><rect class="cut" x="47" y="92" width="2" height="8"/><rect class="cut" x="44" y="127" width="8" height="2"/><rect class="cut" x="47" y="124" width="2" height="8"/><rect class="cut" x="44" y="159" width="8" height="2"/><rect class="cut" x="47" y="156" width="2" height="8"/><rect class="cut" x="44" y="191" width="8" height="2"/><rect class="cut" x="47" y="188" width="2" height="8"/><rect class="cut" x="44" y="223" width="8" height="2"/><rect class="cut" x="47" y="220" width="2" height="8"/><rect class="cut" x="44" y="255" width="8" height="2"/><rect class="cut" x="47" y="252" width="2" height="8"/><rect class="cut" x="76" y="31" width="8" height="2"/><rect class="cut" x="79" y="28" width="2" height="8"/><rect class="cut" x="76" y="63" width="8" height="2"/><rect class="cut" x="79" y="60" width="2" height="8"/><rect class="cut" x="76" y="95" width="8" height="2"/><rect class="cut" x="79" y="92" width="2" height="8"/><rect class="cut" x="76" y="127" width="8" height="2"/><rect class="cut" x="79" y="124" width="2" height="8"/><rect class="cut" x="76" y="159" width="8" height="2"/><rect class="cut" x="79" y="156" width="2" height="8"/><rect class="cut" x="76" y="191" width="8" height="2"/><rect class="cut" x="79" y="188" width="2" height="8"/><rect class="cut" x="76" y="223" width="8" height="2"/><rect class="cut" x="79" y="220" width="2" height="8"/><rect class="cut" x="76" y="255" width="8" height="2"/><rect class="cut" x="79" y="252" width="2" height="8"/><rect class="cut" x="108" y="31" width="8" height="2"/><rect class="cut" x="111" y="28" width="2" height="8"/><rect class="cut" x="108" y="63" width="8" height="2"/><rect class="cut" x="111" y="60" width="2" height="8"/><rect class="cut" x="108" y="95" width="8" height="2"/><rect class="cut" x="111" y="92" width="2" height="8"/><rect class="cut" x="108" y="127" width="8" height="2"/><rect class="cut" x="111" y="124" width="2" height="8"/><rect class="cut" x="108" y="159" width="8" height="2"/><rect class="cut" x="111" y="156" width="2" height="8"/><rect class="cut" x="108" y="191" width="8" height="2"/><rect class="cut" x="111" y="188" width="2" height="8"/><rect class="cut" x="108" y="223" width="8" height="2"/><rect class="cut" x="111" y="220" width="2" height="8"/><rect class="cut" x="108" y="255" width="8" height="2"/><rect class="cut" x="111" y="252" width="2" height="8"/><rect class="cut" x="140" y="31" width="8" height="2"/><rect class="cut" x="143" y="28" width="2" height="8"/><rect class="cut" x="140" y="63" width="8" height="2"/><rect class="cut" x="143" y="60" width="2" height="8"/><rect class="cut" x="140" y="95" width="8" height="2"/><rect class="cut" x="143" y="92" width="2" height="8"/><rect class="cut" x="140" y="127" width="8" height="2"/><rect class="cut" x="143" y="124" width="2" height="8"/><rect class="cut" x="140" y="159" width="8" height="2"/><rect class="cut" x="143" y="156" width="2" height="8"/><rect class="cut" x="140" y="191" width="8" height="2"/><rect class="cut" x="143" y="188" width="2" height="8"/><rect class="cut" x="140" y="223" width="8" height="2"/><rect class="cut" x="143" y="220" width="2" height="8"/><rect class="cut" x="140" y="255" width="8" height="2"/><rect class="cut" x="143" y="252" width="2" height="8"/><rect class="cut" x="172" y="31" width="8" height="2"/><rect class="cut" x="175" y="28" width="2" height="8"/><rect class="cut" x="172" y="63" width="8" height="2"/><rect class="cut" x="175" y="60" width="2" height="8"/><rect class="cut" x="172" y="95" width="8" height="2"/><rect class="cut" x="175" y="92" width="2" height="8"/><rect class="cut" x="172" y="127" width="8" height="2"/><rect class="cut" x="175" y="124" width="2" height="8"/><rect class="cut" x="172" y="159" width="8" height="2"/><rect class="cut" x="175" y="156" width="2" height="8"/><rect class="cut" x="172" y="191" width="8" height="2"/><rect class="cut" x="175" y="188" width="2" height="8"/><rect class="cut" x="172" y="223" width="8" height="2"/><rect class="cut" x="175" y="220" width="2" height="8"/><rect class="cut" x="172" y="255" width="8" height="2"/><rect class="cut" x="175" y="252" width="2" height="8"/><rect class="cut" x="204" y="31" width="8" height="2"/><rect class="cut" x="207" y="28" width="2" height="8"/><rect class="cut" x="204" y="63" width="8" height="2"/><rect class="cut" x="207" y="60" width="2" height="8"/><rect class="cut" x="204" y="95" width="8" height="2"/><rect class="cut" x="207" y="92" width="2" height="8"/><rect class="cut" x="204" y="127" width="8" height="2"/><rect class="cut" x="207" y="124" width="2" height="8"/><rect class="cut" x="204" y="159" width="8" height="2"/><rect class="cut" x="207" y="156" width="2" height="8"/><rect class="cut" x="204" y="191" width="8" height="2"/><rect class="cut" x="207" y="188" width="2" height="8"/><rect class="cut" x="204" y="223" width="8" height="2"/><rect class="cut" x="207" y="220" width="2" height="8"/><rect class="cut" x="204" y="255" width="8" height="2"/><rect class="cut" x="207" y="252" width="2" height="8"/><rect class="cut" x="236" y="31" width="8" height="2"/><rect class="cut" x="239" y="28" width="2" height="8"/><rect class="cut" x="236" y="63" width="8" height="2"/><rect class="cut" x="239" y="60" width="2" height="8"/><rect class="cut" x="236" y="95" width="8" height="2"/><rect class="cut" x="239" y="92" width="2" height="8"/><rect class="cut" x="236" y="127" width="8" height="2"/><rect class="cut" x="239" y="124" width="2" height="8"/><rect class="cut" x="236" y="159" width="8" height="2"/><rect class="cut" x="239" y="156" width="2" height="8"/><rect class="cut" x="236" y="191" width="8" height="2"/><rect class="cut" x="239" y="188" width="2" height="8"/><rect class="cut" x="236" y="223" width="8" height="2"/><rect class="cut" x="239" y="220" width="2" height="8"/><rect class="cut" x="236" y="255" width="8" height="2"/><rect class="cut" x="239" y="252" width="2" height="8"/>
+<rect class="blue sm" x="272" y="-8" width="96" height="104" rx="4"/>
+<rect class="tint blk" x="384" y="-8" width="112" height="104" rx="6"/>
+<rect class="acc blk" x="272" y="112" width="224" height="192" rx="6"/>
+</svg>
+</div>
+<div class="words">
+<h1 class="name">Peera<span>/</span><br>Lab</h1>
+<p class="tag">See what I build, not just what I have done.</p>
+</div>
+</div>
+</body>
+</html>

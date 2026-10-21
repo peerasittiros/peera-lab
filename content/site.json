@@ -1,0 +1,218 @@
+{
+  "name": "Peera Sittiros",
+  "nav": [
+    {
+      "key": "products",
+      "label": {
+        "en": "Products",
+        "th": "ผลิตภัณฑ์"
+      },
+      "href": "#products"
+    },
+    {
+      "key": "projects",
+      "label": {
+        "en": "Projects",
+        "th": "โปรเจกต์"
+      },
+      "href": "/projects"
+    },
+    {
+      "key": "contact",
+      "label": {
+        "en": "Contact",
+        "th": "ติดต่อ"
+      },
+      "href": "#contact"
+    }
+  ],
+  "hero": {
+    "title": {
+      "en": "Build software that solves real business problems.",
+      "th": "สร้างซอฟต์แวร์|ที่แก้ปัญหาจริง|ให้กับธุรกิจ"
+    },
+    "lead": {
+      "en": "Small, useful products for small and medium businesses. Each one starts from a real problem and ends as software people use every day.",
+      "th": "ผลิตภัณฑ์เล็ก ๆ ที่ใช้ได้จริงสำหรับธุรกิจขนาดเล็กและกลาง แต่ละตัวเริ่มจากปัญหาจริง และจบที่ซอฟต์แวร์ที่คนใช้ได้ทุกวัน"
+    },
+    "actions": [
+      {
+        "label": {
+          "en": "See the products",
+          "th": "ดูผลิตภัณฑ์"
+        },
+        "href": "#products"
+      },
+      {
+        "label": {
+          "en": "Contact",
+          "th": "ติดต่อ"
+        },
+        "href": "#contact"
+      }
+    ]
+  },
+  "contact": {
+    "title": {
+      "en": "Have a problem software could solve?",
+      "th": "มีปัญหาที่ซอฟต์แวร์|ช่วยแก้ได้ไหม?"
+    },
+    "lead": {
+      "en": "Tell me what slows your team down. I reply within two working days.",
+      "th": "เล่าให้ฟังว่าอะไรทำให้งานของคุณช้า ผมตอบกลับภายในสองวันทำการ"
+    },
+    "person": {
+      "name": {
+        "en": "Peera Sittiros",
+        "th": "พีระ สิทธิรส"
+      },
+      "role": {
+        "en": "Software engineer, Bangkok",
+        "th": "วิศวกรซอฟต์แวร์ กรุงเทพฯ"
+      },
+      "body": {
+        "en": "I build enterprise systems for financial institutions by day. In this lab I build small, useful products for small and medium businesses, starting from the problem each one has to solve.",
+        "th": "กลางวันผมพัฒนาระบบองค์กรให้สถาบันการเงิน ส่วนในแล็บนี้ผมสร้างผลิตภัณฑ์เล็ก ๆ สำหรับธุรกิจขนาดเล็กและกลาง โดยเริ่มจากปัญหาที่แต่ละตัวต้องแก้ให้ได้ก่อนเสมอ"
+      }
+    },
+    "email": "peerasittiros@gmail.com",
+    "phone": "0627532703",
+    "actions": [
+      {
+        "label": {
+          "en": "Request a similar product",
+          "th": "อยากได้ระบบแบบนี้"
+        },
+        "href": "mailto:peerasittiros@gmail.com"
+      }
+    ]
+  },
+  "home": {
+    "building": {
+      "en": "Now building",
+      "th": "กำลังสร้าง"
+    },
+    "lab": {
+      "title": {
+        "en": "Things I am building",
+        "th": "สิ่งที่ผมกำลังสร้าง"
+      },
+      "lead": {
+        "en": "Products and experiments, from concept to live.",
+        "th": "ผลิตภัณฑ์และการทดลอง ตั้งแต่ไอเดียจนถึงใช้งานจริง"
+      },
+      "all": {
+        "en": "All products",
+        "th": "ผลิตภัณฑ์ทั้งหมด"
+      }
+    }
+  },
+  "collections": {
+    "products": {
+      "title": {
+        "en": "Things I am building",
+        "th": "สิ่งที่ผมกำลังสร้าง"
+      },
+      "lead": {
+        "en": "Products and experiments, from concept to live.",
+        "th": "ผลิตภัณฑ์และการทดลอง ตั้งแต่ไอเดียจนถึงใช้งานจริง"
+      },
+      "empty": {
+        "en": "No products yet.",
+        "th": "ยังไม่มีผลิตภัณฑ์"
+      },
+      "more": {
+        "en": "More from the lab",
+        "th": "ผลิตภัณฑ์อื่นในแล็บ"
+      },
+      "all": {
+        "en": "All products",
+        "th": "ผลิตภัณฑ์ทั้งหมด"
+      },
+      "request": {
+        "en": "Request a similar product",
+        "th": "อยากได้ระบบแบบนี้"
+      },
+      "contactTitle": {
+        "en": "Want a product like {name}?",
+        "th": "อยากได้ระบบแบบ {name} ไหม?"
+      }
+    },
+    "projects": {
+      "title": {
+        "en": "Projects",
+        "th": "โปรเจกต์"
+      },
+      "lead": {
+        "en": "Other things I have built: side projects, tools and experiments.",
+        "th": "งานอื่น ๆ ที่ผมทำ ทั้งโปรเจกต์ส่วนตัว เครื่องมือ และงานทดลอง"
+      },
+      "empty": {
+        "en": "No projects yet.",
+        "th": "ยังไม่มีโปรเจกต์"
+      },
+      "more": {
+        "en": "More projects",
+        "th": "โปรเจกต์อื่น"
+      },
+      "all": {
+        "en": "All projects",
+        "th": "โปรเจกต์ทั้งหมด"
+      },
+      "request": {
+        "en": "Ask about this project",
+        "th": "สอบถามเกี่ยวกับงานนี้"
+      },
+      "contactTitle": {
+        "en": "Want something like {name}?",
+        "th": "อยากได้งานแบบ {name} ไหม?"
+      }
+    }
+  },
+  "demo": {
+    "label": {
+      "en": "Demo",
+      "th": "เดโม"
+    },
+    "previewLead": {
+      "en": "The live demo is not ready yet. This is a preview of the screen it will open on.",
+      "th": "เดโมจริงยังไม่พร้อม ตอนนี้เป็นภาพตัวอย่างของหน้าจอที่เดโมจะเปิดขึ้นมา"
+    },
+    "liveLead": {
+      "en": "The demo runs as its own app, separate from this site. It uses sample data.",
+      "th": "เดโมนี้รันเป็นแอปแยกจากเว็บไซต์นี้ และใช้ข้อมูลตัวอย่าง"
+    },
+    "newTab": {
+      "en": "Open in a new tab",
+      "th": "เปิดในแท็บใหม่"
+    },
+    "back": {
+      "en": "Back",
+      "th": "ย้อนกลับ"
+    }
+  },
+  "contactPage": {
+    "title": {
+      "en": "Contact",
+      "th": "ติดต่อ"
+    },
+    "lead": {
+      "en": "Email or call. I read every message myself.",
+      "th": "ส่งอีเมลหรือโทรมาได้เลย ผมอ่านทุกข้อความเอง"
+    }
+  },
+  "notFound": {
+    "title": {
+      "en": "This page does not exist.",
+      "th": "ไม่พบหน้านี้"
+    },
+    "body": {
+      "en": "The link may be old, or the page may have moved.",
+      "th": "ลิงก์อาจเก่าแล้ว หรือหน้านี้อาจถูกย้ายไปที่อื่น"
+    },
+    "home": {
+      "en": "Back to the home page",
+      "th": "กลับหน้าแรก"
+    }
+  }
+}

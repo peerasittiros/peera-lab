@@ -1,0 +1,13 @@
+{
+  "slug": "followup",
+  "title": { "en": "Followup", "th": "Followup" },
+  "tagline": {
+    "en": "A CRM that only asks one thing: who do you call today?",
+    "th": "CRM ที่ถามแค่ข้อเดียว: วันนี้ต้องโทรหาใคร"
+  },
+  "category": { "en": "CRM", "th": "CRM" },
+  "status": "concept",
+  "order": 3,
+  "technologies": ["React", "Supabase"],
+  "preview": "board"
+}

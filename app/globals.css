@@ -1,0 +1,97 @@
+@import 'tailwindcss';
+@import '../design-system/tokens.css';
+@import '../components/styles.css';
+
+/* Self-hosted next/font families replace the family names in tokens.css; fallbacks stay the same. */
+:root {
+  --font-display: var(--nf-funnel-display), var(--nf-anuphan), 'Helvetica Neue', Arial, sans-serif;
+  --font-display-th: var(--nf-anuphan), var(--nf-funnel-display), 'Noto Sans Thai', sans-serif;
+  --font-sans: var(--nf-plex-sans-thai), 'Noto Sans Thai', 'Helvetica Neue', Arial, sans-serif;
+  --font-mono: var(--nf-plex-mono), var(--nf-plex-sans-thai), ui-monospace, Menlo, monospace;
+}
+
+/* Tailwind utilities map to the design tokens: bg-surface, text-ink, border-line, rounded-sm, shadow-lift, font-display…
+   Entries whose name equals the token (radius, shadow, font, ease) are self-references in Tailwind's layered theme;
+   the unlayered token declarations above win, so the token value is what renders. */
+@theme inline {
+  --color-surface: var(--surface);
+  --color-surface-raised: var(--surface-raised);
+  --color-surface-sunken: var(--surface-sunken);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
+  --color-ink-faint: var(--ink-faint);
+  --color-accent: var(--accent);
+  --color-on-accent: var(--on-accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-accent-ink: var(--accent-ink);
+  --color-blueprint: var(--blueprint);
+  --color-blueprint-soft: var(--blueprint-soft);
+  --color-status-prototype: var(--status-prototype);
+  --color-status-prototype-soft: var(--status-prototype-soft);
+  --color-status-demo: var(--status-demo);
+  --color-status-demo-soft: var(--status-demo-soft);
+  --color-status-live: var(--status-live);
+  --color-status-live-soft: var(--status-live-soft);
+  --color-inverse-surface: var(--inverse-surface);
+  --color-inverse-ink: var(--inverse-ink);
+  --color-inverse-ink-muted: var(--inverse-ink-muted);
+  --color-inverse-accent: var(--inverse-accent);
+  --color-on-inverse-accent: var(--on-inverse-accent);
+  --color-link: var(--link);
+  --color-focus-ring: var(--focus-ring);
+
+  --font-display: var(--font-display);
+  --font-display-th: var(--font-display-th);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+
+  --radius-xs: var(--radius-xs);
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+  --radius-lg: var(--radius-lg);
+  --radius-full: var(--radius-full);
+
+  --shadow-sm: var(--shadow-sm);
+  --shadow-lift: var(--shadow-lift);
+
+  --ease-out: var(--ease-out);
+  --ease-in-out: var(--ease-in-out);
+
+  --container-max: var(--container-max);
+  --container-measure-en: var(--measure-en);
+  --container-measure-th: var(--measure-th);
+
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+}
+
+html {
+  color-scheme: light;
+}
+html[data-theme='dark'] {
+  color-scheme: dark;
+}
+/* Footer sits at the bottom of the viewport on short pages: body is nav / main / footer, and main grows. */
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100dvh;
+  margin: 0;
+  background: var(--surface);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+body > main {
+  flex: 1 0 auto;
+}
+:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}

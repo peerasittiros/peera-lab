@@ -1,0 +1,37 @@
+<!-- @dsCard group="Navigation" height=96 -->
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><title>LangSwitch — preview</title></head>
+<body>
+<div id="root"></div>
+<script>
+var P = window.PeeraLab, h = React.createElement;
+var PRODUCTS = [
+  { slug: 'stockline', title: { en: 'Stockline', th: 'Stockline' }, category: { en: 'Inventory', th: 'ระบบสต็อก' }, status: 'in-development', preview: 'table',
+    tagline: { en: 'Inventory that small shops can actually keep up to date.', th: 'ระบบสต็อกที่ร้านค้าเล็ก ๆ อัปเดตได้จริงทุกวัน' },
+    problem: { en: 'SME owners track stock in spreadsheets and LINE chats, so counts drift and reorders come late.', th: 'เจ้าของกิจการ SME จดสต็อกในสเปรดชีตและแชต LINE ตัวเลขจึงคลาดเคลื่อน และสั่งของเข้าช้า' },
+    value: { en: 'One screen for stock in, stock out and what to reorder this week.', th: 'หน้าจอเดียวสำหรับรับเข้า เบิกออก และรายการที่ต้องสั่งเพิ่มสัปดาห์นี้' },
+    technologies: ['Next.js', 'TypeScript', 'PostgreSQL', 'Tailwind CSS'] },
+  { slug: 'clinic-desk', title: { en: 'Clinic Desk', th: 'Clinic Desk' }, category: { en: 'Clinic', th: 'คลินิก' }, status: 'prototype', preview: 'calendar',
+    tagline: { en: 'Appointments and the patient queue for small clinics.', th: 'ระบบนัดหมายและคิวผู้ป่วยสำหรับคลินิกขนาดเล็ก' },
+    technologies: ['Next.js', 'TypeScript', 'Prisma'] },
+  { slug: 'followup', title: { en: 'Followup', th: 'Followup' }, category: { en: 'CRM', th: 'CRM' }, status: 'concept', preview: 'board',
+    tagline: { en: 'A CRM that only asks one thing: who do you call today?', th: 'CRM ที่ถามแค่ข้อเดียว: วันนี้ต้องโทรหาใคร' },
+    technologies: ['React', 'Supabase'] },
+  { slug: 'tableside', title: { en: 'Tableside', th: 'Tableside' }, category: { en: 'Restaurant', th: 'ร้านอาหาร' }, status: 'coming-soon', preview: 'dashboard',
+    tagline: { en: 'Daily sales and food cost for a single-branch restaurant.', th: 'ยอดขายรายวันและต้นทุนอาหารสำหรับร้านสาขาเดียว' },
+    technologies: ['Next.js', 'TypeScript', 'Charts', 'PostgreSQL'] }
+];
+function mount(el) { ReactDOM.createRoot(document.getElementById('root')).render(el); }
+function pair(render, cols) {
+  return h('div', { className: cols === 1 ? 'pv' : 'pv pv-2' }, ['en', 'th'].map(function (l) {
+    return h('div', { key: l }, h('p', { className: 'pv-cap' }, l === 'en' ? 'English' : 'ไทย · Thai'), render(l));
+  }));
+}
+
+
+function Demo() { var s = React.useState('th'); return h('div', { className: 'pv pv-row' }, h(P.LangSwitch, { locale: s[0], onChange: s[1] }), h('span', { className: 'pv-cap', style: { margin: 0 } }, 'current: ' + s[0])); }
+mount(h(Demo));
+</script>
+</body>
+</html>

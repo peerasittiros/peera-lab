@@ -19,6 +19,7 @@ import { FeaturedProduct, productSpecRows } from '@/components/products/Featured
 import { ProductCard } from '@/components/products/ProductCard';
 import { ProductLab } from '@/components/products/ProductLab';
 import { ProductSections } from '@/components/products/ProductSections';
+import { DemoEmbed, DemoOpenLink } from '@/components/products/DemoEmbed';
 
 export type LocaleParams = Promise<{ locale: string }>;
 export type ItemParams = Promise<{ locale: string; slug: string }>;
@@ -189,9 +190,7 @@ export async function CollectionDemoPage({ kind, params }: { kind: Kind; params:
             </p>
             <div className="pl-featured-actions">
               {live ? (
-                <Button variant="secondary" href={live} external arrow>
-                  {t(demoCopy.newTab, locale)}
-                </Button>
+                <DemoOpenLink src={live} locale={locale} label={t(demoCopy.newTab, locale)} />
               ) : null}
               <Button variant="ghost" href={kindHref(kind, locale, slug)}>
                 {`${t(demoCopy.back, locale)}: ${title}`}
@@ -205,13 +204,10 @@ export async function CollectionDemoPage({ kind, params }: { kind: Kind; params:
             aspect="16 / 10"
           >
             {live ? (
-              <iframe
-                className="pl-demo-embed"
+              <DemoEmbed
                 src={live}
+                locale={locale}
                 title={locale === 'th' ? `เดโม ${title}` : `${title} demo`}
-                loading="lazy"
-                referrerPolicy="strict-origin-when-cross-origin"
-                sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-downloads"
               />
             ) : (
               <AppSkeleton kind={item.preview} label={title} />

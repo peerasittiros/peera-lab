@@ -2,13 +2,19 @@
 //   ADMIN_USERNAME        the login name
 //   ADMIN_PASSWORD_HASH   scrypt:<salt hex>:<hash hex>, made by `npm run admin:setup`
 //   ADMIN_SECRET          random string (≥ 32 chars) that signs the session cookie
-// Every admin page and every admin Server Action calls requireAdmin(); the proxy check is only a shortcut.
+//   ADMIN_FORCE_ENABLE=1  explicitly enable the admin on Vercel (local-only by default)
+// Every admin page and every admin Server Action checks availability before doing any work.
 import { createHmac, randomBytes, scryptSync, timingSafeEqual } from 'node:crypto';
 import { cookies } from 'next/headers';
-import { redirect } from 'next/navigation';
+import { notFound, redirect } from 'next/navigation';
 
 export const SESSION_COOKIE = 'pl_admin';
 const SESSION_HOURS = 8;
+
+/** The admin writes to disk, so it is unavailable on Vercel unless explicitly overridden. */
+export function adminAvailable(): boolean {
+  return process.env.VERCEL !== '1' || process.env.ADMIN_FORCE_ENABLE === '1';
+}
 
 interface AdminConfig {
   username: string;
@@ -93,5 +99,6 @@ export async function isAdmin(): Promise<boolean> {
 
 /** Use at the top of every admin page and Server Action. */
 export async function requireAdmin() {
+  if (!adminAvailable()) notFound();
   if (!(await isAdmin())) redirect('/admin/login');
 }

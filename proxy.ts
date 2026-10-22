@@ -25,7 +25,11 @@ function negotiate(acceptLanguage: string | null, cookie: string | undefined): L
 export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
   const [, first] = pathname.split('/');
-  // The admin has no locale; its pages check the session themselves. /icon is the favicon route (app/icon.tsx).
+  // The admin writes to disk, so it is local-only on Vercel unless explicitly enabled.
+  if (first === 'admin' && process.env.VERCEL === '1' && process.env.ADMIN_FORCE_ENABLE !== '1') {
+    return new NextResponse(null, { status: 404 });
+  }
+  // The admin has no locale. /icon is the favicon route (app/icon.tsx).
   if (isLocale(first) || first === 'admin' || pathname === '/icon') return NextResponse.next();
 
   const locale = negotiate(request.headers.get('accept-language'), request.cookies.get(localeCookie)?.value);

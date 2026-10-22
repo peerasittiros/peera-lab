@@ -1,13 +1,14 @@
 'use server';
 
-import { redirect } from 'next/navigation';
+import { notFound, redirect } from 'next/navigation';
 import { isKind, type Kind } from '@/lib/collections';
-import { checkCredentials, clearSessionCookie, requireAdmin, setSessionCookie } from '@/lib/admin/auth';
+import { adminAvailable, checkCredentials, clearSessionCookie, requireAdmin, setSessionCookie } from '@/lib/admin/auth';
 import { deleteItem, readSite, saveItem, saveSite, type Json, type JsonObject, type SaveState } from '@/lib/admin/store';
 
 // ---- session
 
 export async function login(_: SaveState, formData: FormData): Promise<SaveState> {
+  if (!adminAvailable()) notFound();
   const username = String(formData.get('username') ?? '');
   const password = String(formData.get('password') ?? '');
   if (!checkCredentials(username, password)) {
@@ -20,6 +21,7 @@ export async function login(_: SaveState, formData: FormData): Promise<SaveState
 }
 
 export async function logout() {
+  if (!adminAvailable()) notFound();
   await clearSessionCookie();
   redirect('/admin/login');
 }
@@ -41,6 +43,7 @@ function setString(target: JsonObject, dotted: string, value: string) {
 }
 
 export async function saveSiteAction(_: SaveState, formData: FormData): Promise<SaveState> {
+  if (!adminAvailable()) notFound();
   await requireAdmin();
   const site = readSite();
   for (const [name, value] of formData.entries()) {
@@ -106,6 +109,7 @@ function kindFrom(formData: FormData): Kind {
 }
 
 export async function saveItemAction(_: SaveState, formData: FormData): Promise<SaveState> {
+  if (!adminAvailable()) notFound();
   await requireAdmin();
   const kind = kindFrom(formData);
   const isNew = formData.get('isNew') === '1';
@@ -118,6 +122,7 @@ export async function saveItemAction(_: SaveState, formData: FormData): Promise<
 }
 
 export async function deleteItemAction(_: SaveState, formData: FormData): Promise<SaveState> {
+  if (!adminAvailable()) notFound();
   await requireAdmin();
   const kind = kindFrom(formData);
   const result = deleteItem(kind, text(formData, 'slug'));

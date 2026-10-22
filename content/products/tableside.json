@@ -2,12 +2,20 @@
   "slug": "tableside",
   "title": { "en": "Tableside", "th": "Tableside" },
   "tagline": {
-    "en": "Daily sales and food cost for a single-branch restaurant.",
-    "th": "ยอดขายรายวันและต้นทุนอาหารสำหรับร้านสาขาเดียว"
+    "en": "Daily sales, food cost per dish and real profit after delivery commissions, for a single-branch restaurant.",
+    "th": "ยอดขายรายวัน ต้นทุนอาหารต่อเมนู และกำไรจริงหลังหักค่าคอมแอปเดลิเวอรี สำหรับร้านอาหารสาขาเดียว"
   },
   "category": { "en": "Restaurant", "th": "ร้านอาหาร" },
   "status": "coming-soon",
-  "order": 4,
-  "technologies": ["Next.js", "TypeScript", "Charts", "PostgreSQL"],
+  "order": 5,
+  "problem": {
+    "en": "Owners know today's sales but not which dishes make money once commissions, price changes and waste are counted.",
+    "th": "เจ้าของรู้ยอดขายวันนี้ แต่ไม่รู้ว่าเมนูไหนได้กำไรจริงเมื่อหักค่าคอม ราคาวัตถุดิบที่เปลี่ยน และของเสีย"
+  },
+  "value": {
+    "en": "One dashboard for sales, food cost % and profit per dish, with clear suggestions on what to promote or reprice.",
+    "th": "แดชบอร์ดเดียวสำหรับยอดขาย ต้นทุนอาหาร และกำไรต่อเมนู พร้อมคำแนะนำว่าเมนูไหนควรดันหรือควรปรับราคา"
+  },
+  "technologies": ["Next.js", "TypeScript", "PostgreSQL", "Recharts"],
   "preview": "dashboard"
 }

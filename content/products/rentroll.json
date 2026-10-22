@@ -1,0 +1,33 @@
+{
+  "slug": "rentroll",
+  "title": {
+    "en": "Rentroll",
+    "th": "Rentroll"
+  },
+  "tagline": {
+    "en": "Read every meter on a phone, bill the whole building in one click, and see who has paid.",
+    "th": "จดมิเตอร์ทุกห้องบนมือถือ ออกบิลทั้งตึกในคลิกเดียว และเห็นทันทีว่าใครจ่ายแล้ว"
+  },
+  "category": {
+    "en": "Apartments & dorms",
+    "th": "หอพักและห้องเช่า"
+  },
+  "status": "in-development",
+  "order": 2,
+  "problem": {
+    "en": "Small apartment owners read meters on paper, calculate bills by hand and chase payments and repairs in chat.",
+    "th": "เจ้าของหอพักขนาดเล็กจดมิเตอร์ใส่กระดาษ คิดบิลด้วยมือ และตามค่าเช่ากับงานซ่อมผ่านแชต"
+  },
+  "value": {
+    "en": "Meter readings, monthly bills with PromptPay QR, slip review and repair requests in one system, with a tenant portal in LINE.",
+    "th": "จดมิเตอร์ ออกบิลพร้อม QR PromptPay ตรวจสลิป และรับแจ้งซ่อมในระบบเดียว พร้อมหน้าผู้เช่าใน LINE"
+  },
+  "technologies": [
+    "Next.js",
+    "TypeScript",
+    "PostgreSQL",
+    "PromptPay QR",
+    "LINE LIFF"
+  ],
+  "preview": "table"
+}

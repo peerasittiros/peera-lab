@@ -7,7 +7,7 @@
   },
   "category": { "en": "CRM", "th": "CRM" },
   "status": "concept",
-  "order": 3,
+  "order": 6,
   "technologies": ["React", "Supabase"],
   "preview": "board"
 }

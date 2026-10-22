@@ -1,0 +1,33 @@
+{
+  "slug": "slotbook",
+  "title": {
+    "en": "Slotbook",
+    "th": "Slotbook"
+  },
+  "tagline": {
+    "en": "Customers book a free slot inside LINE in under a minute; the shop sees today's queue and reminders go out by themselves.",
+    "th": "ลูกค้าจองคิวเองใน LINE ภายในหนึ่งนาที ร้านเห็นคิววันนี้ และระบบส่งข้อความเตือนให้เอง"
+  },
+  "category": {
+    "en": "Booking",
+    "th": "จองคิว"
+  },
+  "status": "in-development",
+  "order": 3,
+  "problem": {
+    "en": "Bookings arrive by chat and phone, so owners answer the same questions all day, double-book and lose money to no-shows.",
+    "th": "การจองมาทางแชตและโทรศัพท์ เจ้าของต้องตอบคำถามเดิมทั้งวัน จองซ้อน และเสียรายได้จากลูกค้าที่ไม่มา"
+  },
+  "value": {
+    "en": "Self-service booking, a live board per staff member and automatic reminders.",
+    "th": "ลูกค้าจองเองได้ ตารางคิวแยกตามพนักงานแบบเรียลไทม์ และข้อความเตือนอัตโนมัติ"
+  },
+  "technologies": [
+    "Next.js",
+    "TypeScript",
+    "PostgreSQL",
+    "LINE LIFF",
+    "LINE Messaging API"
+  ],
+  "preview": "calendar"
+}

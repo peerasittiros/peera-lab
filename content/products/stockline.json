@@ -6,8 +6,8 @@
     "th": "Stockline"
   },
   "tagline": {
-    "en": "Inventory that small shops can actually keep up to date.",
-    "th": "ระบบสต็อกที่ร้านค้าเล็ก ๆ อัปเดตได้จริงทุกวัน"
+    "en": "Stock in, stock out and this week's reorder list for shops run by one to three people.",
+    "th": "รับเข้า เบิกออก และรายการสั่งซื้อประจำสัปดาห์ สำหรับร้านที่มีคนดูแลหนึ่งถึงสามคน"
   },
   "category": {
     "en": "Inventory",
@@ -28,6 +28,7 @@
     "Next.js",
     "TypeScript",
     "PostgreSQL",
+    "Drizzle",
     "Tailwind CSS"
   ],
   "preview": "table",

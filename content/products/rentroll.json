@@ -12,7 +12,8 @@
     "en": "Apartments & dorms",
     "th": "หอพักและห้องเช่า"
   },
-  "status": "in-development",
+  "status": "live-demo",
+  "demoUrl": "https://peera-lab-rentroll.vercel.app",
   "order": 2,
   "problem": {
     "en": "Small apartment owners read meters on paper, calculate bills by hand and chase payments and repairs in chat.",

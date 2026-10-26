@@ -43,13 +43,6 @@
         "en": "Rentroll owner dashboard on a desktop screen",
         "th": "หน้าแดชบอร์ดเจ้าของหอพักของ Rentroll บนจอคอมพิวเตอร์"
       }
-    },
-    {
-      "src": "/images/products/rentroll/mobile-home.jpg",
-      "alt": {
-        "en": "Rentroll room and bill summary on a phone",
-        "th": "สรุปห้องและบิลของ Rentroll บนมือถือ"
-      }
     }
   ],
   "sections": [

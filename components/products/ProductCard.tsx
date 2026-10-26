@@ -46,6 +46,7 @@ export function ProductCard({ product, locale, index, indexPrefix = 'P', href, l
           alt={product.thumbnailAlt ? t(product.thumbnailAlt, locale) : undefined}
           sizes="(min-width: 1280px) 33vw, (min-width: 768px) 50vw, 100vw"
           aspect="16 / 10"
+          transitionName={product.slug ? `pl-frame-${product.slug}` : undefined}
         >
           {hasThumb ? null : (
             <AppSkeleton

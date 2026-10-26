@@ -4,8 +4,9 @@ import { useLayoutEffect } from 'react';
 import { usePathname } from 'next/navigation';
 
 /**
- * Fades `.pl-reveal` sections up once as they enter the viewport (README › Motion). Mounted once in the locale
- * layout; it rescans after every navigation.
+ * Fades `.pl-reveal` sections up (and opens `.pl-reveal-clip` frames) once as they enter the viewport
+ * (README › Motion); `.pl-stagger` children follow their section in CSS. Mounted once in the locale layout; it
+ * rescans after every navigation.
  * - Hiding is opt-in: CSS hides `.pl-reveal` only under `html[data-reveal]`, which this sets. Without JS, or under
  *   prefers-reduced-motion, everything stays visible.
  * - Sections already on screen when a page renders are shown at once, without the transition, so nothing above
@@ -17,7 +18,9 @@ export function RevealObserver() {
   useLayoutEffect(() => {
     if (matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) return;
     const root = document.documentElement;
-    const pending = Array.from(document.querySelectorAll<HTMLElement>('.pl-reveal:not(.is-in)'));
+    const pending = Array.from(
+      document.querySelectorAll<HTMLElement>('.pl-reveal:not(.is-in), .pl-reveal-clip:not(.is-in)'),
+    );
     const below: HTMLElement[] = [];
     // Set the start state with transitions off: sections on screen show at once, the rest hide without fading out.
     for (const el of pending) {

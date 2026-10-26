@@ -89,6 +89,8 @@ export function FeaturedProduct({ product, locale, actions, as: Heading = 'h2', 
           alt={product.thumbnailAlt ? t(product.thumbnailAlt, locale) : undefined}
           sizes="(min-width: 1024px) 58vw, 100vw"
           aspect="16 / 10"
+          priority={Heading === 'h1'}
+          transitionName={Heading === 'h1' ? `pl-frame-${product.slug}` : undefined}
         >
           {product.thumbnail ? null : <AppSkeleton kind={product.preview} label={title} />}
         </BrowserFrame>

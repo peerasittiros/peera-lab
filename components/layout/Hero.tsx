@@ -1,8 +1,19 @@
+import type { CSSProperties } from 'react';
 import { pad, cx, tx, type ProductStatus } from '@/lib/design';
 import { t, ts, type Locale, type Localized } from '@/lib/i18n';
 import { Button, type ButtonProps } from '@/components/ui/Button';
 import { Eyebrow } from '@/components/ui/Eyebrow';
 import { StatusBadge } from '@/components/ui/StatusBadge';
+import { BrowserFrame } from '@/components/products/BrowserFrame';
+
+export interface HeroFrame {
+  src: string;
+  alt?: Localized;
+  /** Shown in the frame's URL bar. */
+  url?: string;
+  /** Mono tag at the right of the bar. */
+  tag?: string;
+}
 
 export interface HeroProps {
   locale: Locale;
@@ -15,6 +26,8 @@ export interface HeroProps {
   lead?: Localized;
   /** The first action is primary by default; the rest are secondary. */
   actions?: { label: Localized; href: string; variant?: ButtonProps['variant'] }[];
+  /** Up to two product screenshots, stacked on the right ≥1024 (the first in front); only the first shows below. */
+  frames?: HeroFrame[];
   /** "Now building" list, so products are visible in the first viewport. */
   building?: {
     label: Localized;
@@ -22,49 +35,83 @@ export interface HeroProps {
   };
 }
 
+/** `--i` orders the load entrance (`.pl-enter`, one `--stagger` apart). */
+const step = (i: number) => ({ '--i': i }) as CSSProperties;
+
 /**
- * Identity block: who Peera is, what he builds, and a direct path to the products.
- * h1 of the home page. No portrait, skills cloud or years counter (Hero README).
+ * Identity block: what the lab makes, and a direct path to the products. h1 of the home page.
+ * Split ≥1024: the message on the left; stacked product frames and "Now building" on the right.
+ * The h1 never animates (it is the LCP); the lead, actions and frames enter once on load (DESIGN.md › Motion).
  */
-export function Hero({ locale, index, eyebrow, title, lead, actions, building }: HeroProps) {
+export function Hero({ locale, index, eyebrow, title, lead, actions, frames = [], building }: HeroProps) {
+  const [front, back] = frames;
   return (
     <section className={cx('pl-root', 'pl-hero')} lang={locale}>
-      {index != null || eyebrow ? (
-        <div className="pl-hero-meta">
-          <Eyebrow index={index} text={eyebrow} locale={locale} />
-        </div>
-      ) : null}
-      <h1 className={cx(ts('display-xl', locale), 'pl-hero-title', 'pl-balance')}>{tx(title, locale)}</h1>
-      {lead ? <p className={cx(ts('body-lg', locale), 'pl-hero-lead', 'pl-pretty')}>{t(lead, locale)}</p> : null}
-      {actions ? (
-        <div className="pl-hero-actions">
-          {actions.map((a, i) => (
-            <Button
-              key={i}
-              variant={a.variant ?? (i ? 'secondary' : 'primary')}
-              href={a.href}
-              arrow={i === 0}
-              size="lg"
-            >
-              {t(a.label, locale)}
-            </Button>
-          ))}
-        </div>
-      ) : null}
-      {building ? (
-        <div className="pl-hero-building">
-          <p className={cx(ts('label', locale), 'text-ink-muted mb-1')}>{t(building.label, locale)}</p>
-          <ul>
-            {building.items.map((item, i) => (
-              <li key={i}>
-                <a className="pl-hero-building-row" href={item.href ?? '#'}>
-                  <span className={cx('pl-index', 'label')}>{`P-${pad(i + 1)}`}</span>
-                  <span className={cx('pl-hero-building-name', ts('ui', locale))}>{t(item.name, locale)}</span>
-                  <StatusBadge status={item.status} locale={locale} />
-                </a>
-              </li>
+      <div className="pl-hero-copy">
+        {index != null || eyebrow ? (
+          <div className="pl-hero-meta">
+            <Eyebrow index={index} text={eyebrow} locale={locale} />
+          </div>
+        ) : null}
+        <h1 className={cx(ts('display-xl', locale), 'pl-hero-title', 'pl-balance')}>{tx(title, locale)}</h1>
+        {lead ? (
+          <p className={cx(ts('body-lg', locale), 'pl-hero-lead', 'pl-pretty', 'pl-enter')} style={step(0)}>
+            {t(lead, locale)}
+          </p>
+        ) : null}
+        {actions ? (
+          <div className="pl-hero-actions pl-enter" style={step(1)}>
+            {actions.map((a, i) => (
+              <Button
+                key={i}
+                variant={a.variant ?? (i ? 'secondary' : 'primary')}
+                href={a.href}
+                arrow={i === 0}
+                size="lg"
+              >
+                {t(a.label, locale)}
+              </Button>
             ))}
-          </ul>
+          </div>
+        ) : null}
+      </div>
+      {front || building ? (
+        <div className="pl-hero-side">
+          {front ? (
+            <div className="pl-hero-stack pl-enter" style={step(2)}>
+              {back ? (
+                <div className="pl-hero-frame pl-hero-frame-back" aria-hidden="true">
+                  <BrowserFrame url={back.url} tag={back.tag} src={back.src} alt="" sizes="(min-width: 1024px) 36vw, 0px" />
+                </div>
+              ) : null}
+              <div className="pl-hero-frame pl-hero-frame-front">
+                <BrowserFrame
+                  url={front.url}
+                  tag={front.tag}
+                  src={front.src}
+                  alt={front.alt ? t(front.alt, locale) : ''}
+                  sizes="(min-width: 1024px) 36vw, 100vw"
+                  priority
+                />
+              </div>
+            </div>
+          ) : null}
+          {building ? (
+            <div className="pl-hero-building pl-enter" style={step(3)}>
+              <p className={cx(ts('label', locale), 'text-ink-muted mb-1')}>{t(building.label, locale)}</p>
+              <ul>
+                {building.items.map((item, i) => (
+                  <li key={i}>
+                    <a className="pl-hero-building-row" href={item.href ?? '#'}>
+                      <span className={cx('pl-index', 'label')}>{`P-${pad(i + 1)}`}</span>
+                      <span className={cx('pl-hero-building-name', ts('ui', locale))}>{t(item.name, locale)}</span>
+                      <StatusBadge status={item.status} locale={locale} />
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ) : null}
         </div>
       ) : null}
     </section>

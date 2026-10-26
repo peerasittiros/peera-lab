@@ -104,12 +104,12 @@
     },
     "details": {
       "title": {
-        "en": "What the two main products do",
-        "th": "ผลิตภัณฑ์หลักสองตัวทำอะไรได้บ้าง"
+        "en": "Other products, in detail",
+        "th": "ผลิตภัณฑ์อื่นแบบละเอียด"
       },
       "lead": {
-        "en": "A closer look at what each one does, and which tasks it takes off your desk.",
-        "th": "ดูให้ละเอียดขึ้นว่าแต่ละตัวทำอะไรได้บ้าง และช่วยลดงานอะไรบนโต๊ะของคุณ"
+        "en": "What each one does, and which tasks it takes off your desk.",
+        "th": "แต่ละตัวทำอะไรได้บ้าง และช่วยลดงานอะไรบนโต๊ะของคุณ"
       }
     }
   },

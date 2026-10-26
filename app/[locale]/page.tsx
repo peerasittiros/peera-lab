@@ -10,14 +10,15 @@ import { Hero } from '@/components/layout/Hero';
 import { SectionHeader } from '@/components/layout/SectionHeader';
 import { ContactBlock } from '@/components/layout/ContactBlock';
 import { Footer } from '@/components/layout/Footer';
-import { FeaturedProduct } from '@/components/products/FeaturedProduct';
+import { STATUS } from '@/lib/design';
 import { ProductGrid } from '@/components/products/ProductGrid';
 import { ProductDetails } from '@/components/products/ProductDetails';
+import { ProductStory } from '@/components/products/ProductStory';
 
 /**
- * Homepage: Nav → Hero → 01 Featured → 02 Product Lab → 03 Contact → Footer.
- * Personal details (name, role, bio) appear only in the Contact band.
- * The Hero is the page's only h1. Every section opens with SectionHeader as an h2.
+ * Homepage: Nav → Hero (split, stacked product frames) → Product story (featured) → Feature bento → Product Lab →
+ * Contact → Footer (DESIGN.md › Layout). Personal details appear only in the Contact band.
+ * The Hero is the page's only h1. Every section opens with an h2.
  */
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale: raw } = await params;
@@ -36,6 +37,16 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
   const products = getProducts();
   const featured = getFeaturedProduct();
   const lab = products.filter((product) => product.slug !== featured.slug);
+  // The hero stacks up to two real screenshots, the featured product in front.
+  const frames = [featured, ...lab]
+    .filter((product) => product.thumbnail)
+    .slice(0, 2)
+    .map((product) => ({
+      src: product.thumbnail!,
+      alt: product.thumbnailAlt,
+      url: product.url ?? `${product.slug}.peera.dev`,
+      tag: t(STATUS[product.status], 'en'),
+    }));
   const year = new Date().getFullYear();
   const brand = site.name.split(' ')[0];
 
@@ -55,6 +66,7 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
           title={site.hero.title}
           lead={site.hero.lead}
           actions={site.hero.actions.map((a, i) => ({ label: a.label, href: a.href, variant: i ? 'secondary' : 'primary' }))}
+          frames={frames}
           building={{
             label: site.home.building,
             items: products.map((product) => ({
@@ -65,8 +77,8 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
           }}
         />
 
-        <div className="pl-home-section pl-reveal" id="featured">
-          <FeaturedProduct product={featured} locale={locale} />
+        <div className="pl-home-section" id="featured">
+          <ProductStory product={featured} locale={locale} />
         </div>
 
         <div className="pl-home-section" id="details">
@@ -75,6 +87,7 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
             locale={locale}
             title={site.home.details.title}
             lead={site.home.details.lead}
+            exclude={featured.slug}
           />
         </div>
 

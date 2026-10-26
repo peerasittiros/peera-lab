@@ -47,9 +47,9 @@ export function ContactBlock({
 
   return (
     <section className={cx('pl-root', 'pl-contact', 'pl-inverse', 'pl-reveal')} lang={locale} id={id} aria-labelledby={headingId}>
-      <div className="pl-contact-inner">
+      <div className="pl-contact-inner pl-stagger">
         <Eyebrow index={index} text={eyebrow} locale={locale} />
-        <Heading className={cx('pl-contact-title', ts('headline-lg', locale), 'pl-balance')} id={headingId}>
+        <Heading className={cx('pl-contact-title', ts('display-lg', locale), 'pl-balance')} id={headingId}>
           {tx(title, locale)}
         </Heading>
         {lead ? <p className={cx('pl-contact-lead', ts('body-lg', locale), 'pl-pretty')}>{t(lead, locale)}</p> : null}

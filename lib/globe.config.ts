@@ -23,7 +23,7 @@ export interface GlobeTheme {
 export interface GlobeConfig {
   /** false removes the globe (the hero keeps its height). */
   enabled: boolean;
-  /** Also run on phones (< 768 px). It loads about 150 KB of three.js there, so it is off by default. */
+  /** Also run on phones (< 768 px). It loads about 150 KB of three.js there, after the page is idle. */
   phones: boolean;
   /** Globe size; the playground uses 0.5 to 2. */
   size: number;
@@ -48,7 +48,7 @@ export interface GlobeConfig {
 /** The site look: accent lines, blueprint points, transparent background. */
 export const siteGlobe: GlobeConfig = {
   enabled: true,
-  phones: false,
+  phones: true,
   size: 1,
   scale: 1,
   scaleMobile: 1,

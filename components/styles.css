@@ -158,7 +158,8 @@ main [id] { scroll-margin-top: calc(var(--nav-height) + var(--space-4)); }
 .pl-hero-band { position: relative; overflow: hidden; }
 .pl-hero-band > .pl-hero { position: relative; z-index: 1; }
 .pl-hero-globe { display: none; position: absolute; inset: 0; z-index: 0; --globe-mask: linear-gradient(to right, rgba(0, 0, 0, var(--globe-fade, 0.25)) 0, rgba(0, 0, 0, var(--globe-fade, 0.25)) 28%, #000 58%); -webkit-mask-image: var(--globe-mask); mask-image: var(--globe-mask); }
-.pl-hero-globe.on-phones { display: block; --globe-mask: linear-gradient(to bottom, rgba(0, 0, 0, var(--globe-fade, 0.25)) 0, rgba(0, 0, 0, var(--globe-fade, 0.25)) 100%); }
+/* Phones stack the text over the globe: faint behind the message, full below it. */
+.pl-hero-globe.on-phones { display: block; --globe-mask: linear-gradient(to bottom, rgba(0, 0, 0, var(--globe-fade, 0.25)) 0, rgba(0, 0, 0, var(--globe-fade, 0.25)) 45%, #000 85%); }
 .pl-hero-band:has(.pl-hero-globe.on-phones) > .pl-hero { min-height: calc(100svh - 56px); align-content: center; }
 @media (min-width: 768px) {
   .pl-hero-globe, .pl-hero-globe.on-phones { display: block; --globe-mask: linear-gradient(to right, rgba(0, 0, 0, var(--globe-fade, 0.25)) 0, rgba(0, 0, 0, var(--globe-fade, 0.25)) 28%, #000 58%); }

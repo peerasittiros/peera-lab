@@ -254,6 +254,35 @@ main [id] { scroll-margin-top: calc(var(--nav-height) + var(--space-4)); }
 .pl-devices-phone { position: absolute; right: 0; bottom: 0; width: 25%; z-index: 2; }
 .pl-devices-label { color: var(--ink-muted); }
 
+/* ---- Device light and motion (device art, exempt from the site colour rules; DESIGN.md › Motion).
+   Light: a soft floor shadow under the stack and a glass sheen that crosses each screen once.
+   Motion: in the hero the laptop lid opens and the phone rises on load; in the bento the phone slides in when its
+   card is revealed; on hover (≥1024, fine pointers) the stack tilts a little. Under reduced motion all of it is still. ---- */
+.pl-devices-stage { perspective: 1800px; }
+.pl-devices-stage > * { transition: transform var(--duration-slow) var(--ease-out); transform-style: preserve-3d; }
+.pl-devices-stage::after { content: ""; position: absolute; left: 3%; right: 0; bottom: -3%; height: 9%; z-index: 0; border-radius: 50%; background: radial-gradient(closest-side, rgba(20, 20, 20, 0.22), rgba(20, 20, 20, 0)); pointer-events: none; }
+[data-theme="dark"] .pl-devices-stage::after { background: radial-gradient(closest-side, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0)); }
+.pl-devices-desktop, .pl-devices-phone { position: relative; z-index: 1; }
+.pl-devices-phone { position: absolute; z-index: 2; }
+/* Glass sheen: a light band that crosses the screen once, then fades out. Rests invisible. */
+.pl-device-laptop .device-frame::before, .pl-device-phone .device-frame::before { content: ""; position: absolute; inset: 0; z-index: 3; border-radius: inherit; pointer-events: none; opacity: 0; background: linear-gradient(115deg, rgba(255, 255, 255, 0) 38%, rgba(255, 255, 255, 0.32) 50%, rgba(255, 255, 255, 0) 62%) no-repeat; background-size: 250% 100%; background-position: 120% 0; }
+@keyframes pl-sheen { 0% { opacity: 1; background-position: 120% 0; } 85% { opacity: 1; background-position: -20% 0; } 100% { opacity: 0; background-position: -20% 0; } }
+@keyframes pl-lid { from { transform: perspective(1200px) rotateX(-78deg); opacity: 0.4; } to { transform: perspective(1200px) rotateX(0deg); opacity: 1; } }
+@keyframes pl-rise { from { opacity: 0; transform: translateY(18%) rotate(5deg); } }
+/* Hero, on load: lid opens, phone rises, then both screens catch the light. */
+.pl-hero-stack .device-macbook-pro .device-frame { transform-origin: 50% 100%; animation: pl-lid var(--duration-slow) var(--ease-out) both; animation-delay: calc(3 * var(--stagger)); }
+.pl-hero-stack .pl-devices-phone .pl-device-phone { animation: pl-rise var(--duration-slow) var(--ease-out) both; animation-delay: calc(5 * var(--stagger)); }
+.pl-hero-stack .device-frame::before { animation: pl-sheen 900ms var(--ease-in-out) both; animation-delay: calc(9 * var(--stagger)); }
+/* Bento: the phone slides in when its card is revealed, then the screens catch the light. */
+html[data-reveal] .pl-reveal .pl-bento-shot .pl-devices-phone .pl-device-phone { transition: opacity var(--duration-slow) var(--ease-out), transform var(--duration-slow) var(--ease-out); transition-delay: calc(4 * var(--stagger)); }
+html[data-reveal] .pl-reveal:not(.is-in) .pl-bento-shot .pl-devices-phone .pl-device-phone { opacity: 0; transform: translate(14%, 10%) rotate(5deg); }
+.pl-reveal.is-in .pl-bento-shot .device-frame::before { animation: pl-sheen 900ms var(--ease-in-out) both; animation-delay: calc(6 * var(--stagger)); }
+/* Hover tilt: the laptop turns slightly and the phone steps forward. */
+@media (hover: hover) and (pointer: fine) and (min-width: 1024px) {
+  .pl-devices:hover .pl-devices-desktop { transform: rotateY(-6deg) rotateX(2deg); }
+  .pl-devices:hover .pl-devices-phone { transform: translate(-4%, -3%) rotateY(-8deg); }
+}
+
 /* ---- ProductCard: lifts its frame and eases the screenshot in on hover; responds to its own width. ---- */
 .pl-card { position: relative; container-type: inline-size; }
 .pl-card-link { display: grid; gap: var(--space-4); color: inherit; text-decoration: none; }
@@ -522,7 +551,8 @@ html[data-reveal] .pl-reveal:not(.is-in) .pl-stagger > * { opacity: 0; transform
   }
 }
 @keyframes pl-nav-line { from { border-bottom-color: transparent; } to { border-bottom-color: var(--line); } }
-@keyframes pl-drift { to { transform: translateY(-24px); } }
+/* translate, not transform, so the drift adds to the hover transform instead of replacing it. */
+@keyframes pl-drift { to { translate: 0 -24px; } }
 
 /* ---- page transitions: links are plain <a>, so pages cross-fade with cross-document View Transitions where the
    browser supports them (Chrome 126+, Safari 18.2+); a product frame morphs card → product hero by its

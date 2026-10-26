@@ -112,13 +112,6 @@
       ]
     },
     {
-      "type": "status",
-      "body": {
-        "en": "I am building the first version now. The stock screens work; the reorder list and import are next.",
-        "th": "ตอนนี้ผมกำลังสร้างเวอร์ชันแรกอยู่ หน้าจอรับเข้าและเบิกออกใช้งานได้แล้ว ส่วนรายการสั่งเพิ่มและการนำเข้าข้อมูลคือสิ่งที่จะทำต่อ"
-      }
-    },
-    {
       "type": "roadmap",
       "items": [
         {

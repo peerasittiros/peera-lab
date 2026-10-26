@@ -13,7 +13,8 @@
     "en": "Inventory",
     "th": "ระบบสต็อก"
   },
-  "status": "in-development",
+  "status": "live-demo",
+  "demoUrl": "https://peera-lab-stockline.vercel.app",
   "order": 1,
   "startedAt": "2026-03-01",
   "problem": {
@@ -113,20 +114,16 @@
     {
       "type": "status",
       "body": {
-        "en": "I am building the first version now. The stock screens work; the reorder list and import are next.",
-        "th": "ตอนนี้ผมกำลังสร้างเวอร์ชันแรกอยู่ หน้าจอรับเข้าและเบิกออกใช้งานได้แล้ว ส่วนรายการสั่งเพิ่มและการนำเข้าข้อมูลคือสิ่งที่จะทำต่อ"
+        "en": "The first version is working: stock in and out, the reorder list, purchase orders, stock counts, history and import from a spreadsheet file or pasted rows. Next up are Excel file import and sending the reorder list to LINE.",
+        "th": "เวอร์ชันแรกใช้งานได้แล้ว รับเข้าและเบิกออก รายการสั่งเพิ่ม ใบสั่งซื้อ การนับสต็อก ประวัติ และนำเข้าข้อมูลจากไฟล์สเปรดชีตหรือข้อมูลที่วางมา ส่วนที่จะทำต่อคือการนำเข้าไฟล์ Excel และส่งรายการสั่งของเข้า LINE"
       }
     },
     {
       "type": "roadmap",
       "items": [
         {
-          "en": "Reorder list with supplier contacts",
-          "th": "รายการสั่งของพร้อมช่องทางติดต่อผู้ขาย"
-        },
-        {
-          "en": "Import from Excel and Google Sheets",
-          "th": "นำเข้าข้อมูลจาก Excel และ Google Sheets"
+          "en": "Import Excel (.xlsx) files directly",
+          "th": "นำเข้าไฟล์ Excel (.xlsx) โดยตรง"
         },
         {
           "en": "Send the reorder list to LINE",

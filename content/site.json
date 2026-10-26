@@ -28,25 +28,25 @@
   ],
   "hero": {
     "title": {
-      "en": "Build software that solves real business problems.",
-      "th": "สร้างซอฟต์แวร์|ที่แก้ปัญหาจริง|ให้กับธุรกิจ"
+      "en": "I would like to help with a problem in your business.",
+      "th": "อยากช่วยแก้ปัญหา|ให้ธุรกิจของคุณ"
     },
     "lead": {
-      "en": "Small, useful products for small and medium businesses. Each one starts from a real problem and ends as software people use every day.",
-      "th": "ผลิตภัณฑ์เล็ก ๆ ที่ใช้ได้จริงสำหรับธุรกิจขนาดเล็กและกลาง แต่ละตัวเริ่มจากปัญหาจริง และจบที่ซอฟต์แวร์ที่คนใช้ได้ทุกวัน"
+      "en": "I make small software tools for small and medium businesses. If something in your daily work is slow or hard to keep track of, tell me about it. We can look at it together and see whether software can help.",
+      "th": "ผมทำซอฟต์แวร์ขนาดเล็กให้ธุรกิจขนาดเล็กและกลาง ถ้างานประจำวันมีตรงไหนช้าหรือติดตามยาก ลองเล่าให้ฟังได้เลย แล้วเรามาดูด้วยกันว่าซอฟต์แวร์จะช่วยได้หรือไม่"
     },
     "actions": [
       {
         "label": {
-          "en": "See the products",
-          "th": "ดูผลิตภัณฑ์"
+          "en": "See what I have made",
+          "th": "ดูสิ่งที่ผมทำ"
         },
         "href": "#products"
       },
       {
         "label": {
-          "en": "Contact",
-          "th": "ติดต่อ"
+          "en": "Tell me about it",
+          "th": "เล่าให้ฟัง"
         },
         "href": "#contact"
       }
@@ -54,12 +54,12 @@
   },
   "contact": {
     "title": {
-      "en": "Have a problem software could solve?",
-      "th": "มีปัญหาที่ซอฟต์แวร์|ช่วยแก้ได้ไหม?"
+      "en": "Is there some work that gets in the way?",
+      "th": "มีงานไหนที่ติดขัดอยู่บ้างไหม?"
     },
     "lead": {
-      "en": "Tell me what slows your team down. I reply within two working days.",
-      "th": "เล่าให้ฟังว่าอะไรทำให้งานของคุณช้า ผมตอบกลับภายในสองวันทำการ"
+      "en": "Tell me what your business does and which part takes the most time. I reply within two working days.",
+      "th": "เล่าให้ฟังหน่อยว่าธุรกิจของคุณทำอะไร และงานไหนกินเวลามากที่สุด ผมตอบกลับภายในสองวันทำการ"
     },
     "person": {
       "name": {
@@ -71,8 +71,8 @@
         "th": "วิศวกรซอฟต์แวร์ กรุงเทพฯ"
       },
       "body": {
-        "en": "I build enterprise systems for financial institutions by day. In this lab I build small, useful products for small and medium businesses, starting from the problem each one has to solve.",
-        "th": "กลางวันผมพัฒนาระบบองค์กรให้สถาบันการเงิน ส่วนในแล็บนี้ผมสร้างผลิตภัณฑ์เล็ก ๆ สำหรับธุรกิจขนาดเล็กและกลาง โดยเริ่มจากปัญหาที่แต่ละตัวต้องแก้ให้ได้ก่อนเสมอ"
+        "en": "By day I build systems for financial institutions. In this lab I try out small tools for small businesses, one problem at a time, and I learn a lot from the people who use them.",
+        "th": "กลางวันผมพัฒนาระบบให้สถาบันการเงิน ส่วนในแล็บนี้ ผมลองทำเครื่องมือเล็ก ๆ ให้ธุรกิจขนาดเล็ก ทีละปัญหา และเรียนรู้จากคนที่ใช้งานอยู่เสมอ"
       }
     },
     "email": "peerasittiros@gmail.com",
@@ -80,8 +80,8 @@
     "actions": [
       {
         "label": {
-          "en": "Request a similar product",
-          "th": "อยากได้ระบบแบบนี้"
+          "en": "Send me a message",
+          "th": "ส่งข้อความหาผม"
         },
         "href": "mailto:peerasittiros@gmail.com"
       }
@@ -98,12 +98,22 @@
         "th": "สิ่งที่ผมกำลังสร้าง"
       },
       "lead": {
-        "en": "Products and experiments, from concept to live.",
-        "th": "ผลิตภัณฑ์และการทดลอง ตั้งแต่ไอเดียจนถึงใช้งานจริง"
+        "en": "Small tools I am still learning from. Some are running, and some are still in progress.",
+        "th": "เครื่องมือเล็ก ๆ ที่ผมยังเรียนรู้จากมันอยู่ บางตัวใช้งานได้แล้ว บางตัวยังทำอยู่"
       },
       "all": {
         "en": "All products",
         "th": "ผลิตภัณฑ์ทั้งหมด"
+      }
+    },
+    "details": {
+      "title": {
+        "en": "What the two main products do",
+        "th": "ผลิตภัณฑ์หลักสองตัวทำอะไรได้บ้าง"
+      },
+      "lead": {
+        "en": "A closer look at what each one does, and which tasks it takes off your desk.",
+        "th": "ดูให้ละเอียดขึ้นว่าแต่ละตัวทำอะไรได้บ้าง และช่วยลดงานอะไรบนโต๊ะของคุณ"
       }
     }
   },

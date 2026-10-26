@@ -135,5 +135,33 @@
         }
       ]
     }
+  ],
+  "thumbnail": "/images/products/stockline/desktop-items.jpg",
+  "thumbnailAlt": {
+    "en": "Stockline items list on a desktop screen",
+    "th": "หน้ารายการสินค้าของ Stockline บนจอคอมพิวเตอร์"
+  },
+  "screenshots": [
+    {
+      "src": "/images/products/stockline/desktop-items.jpg",
+      "alt": {
+        "en": "Stockline items list on a desktop screen",
+        "th": "หน้ารายการสินค้าของ Stockline บนจอคอมพิวเตอร์"
+      }
+    },
+    {
+      "src": "/images/products/stockline/desktop-home.jpg",
+      "alt": {
+        "en": "Stockline stock in and out screen with the low-stock list",
+        "th": "หน้ารับ-เบิกของ Stockline พร้อมรายการที่ใกล้หมด"
+      }
+    },
+    {
+      "src": "/images/products/stockline/mobile-home.jpg",
+      "alt": {
+        "en": "Stockline stock in and out screen on a phone",
+        "th": "หน้ารับ-เบิกของ Stockline บนมือถือ"
+      }
+    }
   ]
 }

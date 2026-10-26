@@ -12,6 +12,7 @@ import { ContactBlock } from '@/components/layout/ContactBlock';
 import { Footer } from '@/components/layout/Footer';
 import { FeaturedProduct } from '@/components/products/FeaturedProduct';
 import { ProductGrid } from '@/components/products/ProductGrid';
+import { ProductDetails } from '@/components/products/ProductDetails';
 
 /**
  * Homepage: Nav → Hero → 01 Featured → 02 Product Lab → 03 Contact → Footer.
@@ -66,6 +67,15 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
 
         <div className="pl-home-section pl-reveal" id="featured">
           <FeaturedProduct product={featured} locale={locale} />
+        </div>
+
+        <div className="pl-home-section" id="details">
+          <ProductDetails
+            products={products}
+            locale={locale}
+            title={site.home.details.title}
+            lead={site.home.details.lead}
+          />
         </div>
 
         <div className="pl-home-section pl-reveal" id="products">

@@ -293,6 +293,27 @@ body { margin: 0; background: var(--surface); color: var(--ink); font-family: va
 @media (max-width: 1023px) { .pl-home-section { padding: var(--space-8) var(--gutter-md); } }
 @media (max-width: 767px) { .pl-home-section { padding: var(--space-8) var(--gutter-sm); gap: var(--space-6); } }
 
+/* ---- Homepage product details (not in bundle.css). Each feature fades up in turn via --pl-delay. ---- */
+.pl-pdetails { display: grid; gap: var(--space-8); }
+.pl-pdetail { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: var(--space-6) var(--space-5); align-items: center; padding-top: var(--space-7); border-top: 1px solid var(--line); }
+.pl-pdetail-info { grid-column: 1 / span 5; display: grid; gap: var(--space-4); align-content: start; }
+.pl-pdetail-visual { grid-column: 7 / -1; }
+.pl-pdetail-head { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-3); }
+.pl-pdetail-title { color: var(--ink); }
+.pl-pdetail-tagline { color: var(--ink-muted); }
+.pl-pdetail-actions { display: flex; flex-wrap: wrap; gap: var(--space-3); }
+.pl-pdetail-features { grid-column: 1 / -1; list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: var(--space-4); }
+.pl-pdetail-item { display: grid; gap: var(--space-2); align-content: start; padding: var(--space-5); border: 1px solid var(--line); border-radius: var(--radius-sm); background: var(--surface); transition: opacity var(--duration-slow) var(--ease-out), transform var(--duration-slow) var(--ease-out), border-color var(--duration-fast) var(--ease-out); }
+.pl-pdetail-item:hover { border-color: var(--line-strong); }
+.pl-pdetail-item-title { color: var(--ink); }
+.pl-pdetail-item-body { color: var(--ink-muted); }
+html[data-reveal] .pl-pdetail-item { transition-delay: var(--pl-delay, 0ms), var(--pl-delay, 0ms), 0ms; }
+@media (max-width: 1023px) {
+  .pl-pdetail { align-items: start; }
+  .pl-pdetail-info, .pl-pdetail-visual { grid-column: 1 / -1; }
+}
+@media (prefers-reduced-motion: reduce) { .pl-pdetail-item { transition: none; } }
+
 /* ---- ProductLab filter chips (not in bundle.css; styled like LangSwitch: neutral, ink when current) ---- */
 .pl-lab { display: grid; gap: var(--space-7); }
 .pl-lab-empty { color: var(--ink-muted); }

@@ -124,6 +124,7 @@ export const siteSchema = z.object({
   home: z.object({
     building: localized,
     lab: z.object({ title: localized, lead: localized, all: localized }),
+    details: z.object({ title: localized, lead: localized }),
   }),
   /** Copy for the Products and Projects pages. `contactTitle` may contain {name}, replaced by the item's title. */
   collections: z.object({ products: collectionCopy, projects: collectionCopy }),

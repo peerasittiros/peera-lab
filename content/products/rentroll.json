@@ -30,5 +30,73 @@
     "PromptPay QR",
     "LINE LIFF"
   ],
-  "preview": "table"
+  "preview": "table",
+  "thumbnail": "/images/products/rentroll/desktop-home.jpg",
+  "thumbnailAlt": {
+    "en": "Rentroll owner dashboard on a desktop screen",
+    "th": "หน้าแดชบอร์ดเจ้าของหอพักของ Rentroll บนจอคอมพิวเตอร์"
+  },
+  "screenshots": [
+    {
+      "src": "/images/products/rentroll/desktop-home.jpg",
+      "alt": {
+        "en": "Rentroll owner dashboard on a desktop screen",
+        "th": "หน้าแดชบอร์ดเจ้าของหอพักของ Rentroll บนจอคอมพิวเตอร์"
+      }
+    },
+    {
+      "src": "/images/products/rentroll/mobile-home.jpg",
+      "alt": {
+        "en": "Rentroll room and bill summary on a phone",
+        "th": "สรุปห้องและบิลของ Rentroll บนมือถือ"
+      }
+    }
+  ],
+  "sections": [
+    {
+      "type": "features",
+      "items": [
+        {
+          "title": {
+            "en": "Read meters on a phone",
+            "th": "จดมิเตอร์บนมือถือ"
+          },
+          "body": {
+            "en": "Enter each room reading on the phone, one room at a time. No paper sheet to copy from later.",
+            "th": "จดเลขมิเตอร์ทีละห้องบนมือถือ ไม่ต้องจดลงกระดาษแล้วมาคีย์ซ้ำอีกรอบ"
+          }
+        },
+        {
+          "title": {
+            "en": "Bill the whole building at once",
+            "th": "ออกบิลทั้งตึกพร้อมกัน"
+          },
+          "body": {
+            "en": "Each room bill is worked out from its readings and rate, with a PromptPay QR code on it.",
+            "th": "ระบบคำนวณบิลของแต่ละห้องจากเลขมิเตอร์และอัตรา แล้วใส่ QR PromptPay ไว้ในบิลให้ทุกห้อง"
+          }
+        },
+        {
+          "title": {
+            "en": "See who has paid",
+            "th": "เห็นทันทีว่าใครจ่ายแล้ว"
+          },
+          "body": {
+            "en": "Tenants send their transfer slip, and you check it against the bill in the same place.",
+            "th": "ผู้เช่าส่งสลิปโอนเงินเข้ามา และคุณตรวจกับบิลได้ในที่เดียวกัน"
+          }
+        },
+        {
+          "title": {
+            "en": "Repair requests from LINE",
+            "th": "รับแจ้งซ่อมผ่าน LINE"
+          },
+          "body": {
+            "en": "Tenants report a problem in LINE, and it shows on your list with the room and the time.",
+            "th": "ผู้เช่าแจ้งปัญหาผ่าน LINE และรายการจะขึ้นพร้อมห้องและเวลา ไม่หายไปในแชต"
+          }
+        }
+      ]
+    }
+  ]
 }

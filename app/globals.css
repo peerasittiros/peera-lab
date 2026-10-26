@@ -2,6 +2,7 @@
 @import '../design-system/tokens.css';
 @import '../components/styles.css';
 @import '../components/devices.css';
+@import '../components/products/mocks/mocks.css';
 
 /* Self-hosted next/font families replace the family names in tokens.css; fallbacks stay the same. */
 :root {

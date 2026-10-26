@@ -15,6 +15,7 @@ import { ProductGrid } from '@/components/products/ProductGrid';
 import { ProductDetails } from '@/components/products/ProductDetails';
 import { ProductStory, productShots } from '@/components/products/ProductStory';
 import { DeviceStack, phoneShot } from '@/components/products/DeviceStack';
+import { mockScreens } from '@/components/products/mocks';
 
 /**
  * Homepage: Nav → Hero (the message over the interactive globe) → Devices (the featured product on a laptop and a phone) →
@@ -75,6 +76,7 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
                   locale={locale}
                   desktop={showcaseDesktop}
                   phone={phoneShot(featured)}
+                  screens={mockScreens(featured.slug, locale)}
                   sizes="(min-width: 1024px) 60vw, 100vw"
                 />
               </div>

@@ -7,6 +7,7 @@ import { StatusBadge } from '@/components/ui/StatusBadge';
 import { SectionHeader } from '@/components/layout/SectionHeader';
 import { productShots } from './ProductStory';
 import { DeviceStack, phoneShot } from './DeviceStack';
+import { mockScreens } from './mocks';
 
 export interface ProductDetailsProps {
   products: Product[];
@@ -71,6 +72,7 @@ export function ProductDetails({ products, locale, title, lead, exclude }: Produ
                         locale={locale}
                         desktop={shot}
                         phone={i === 0 ? phoneShot(product) : undefined}
+                        screens={i === 0 ? mockScreens(product.slug, locale) : undefined}
                         sizes="(min-width: 1024px) 50vw, 90vw"
                       />
                     </div>

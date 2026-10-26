@@ -1,0 +1,75 @@
+/*!
+ * iPhone 14 Pro and MacBook Pro frames from Devices.css v0.2.0 (github.com/picturepan2/devices.css).
+ * Only these two devices are kept, and every px value is converted to em so a frame scales with its
+ * container: DeviceStack sets the root font-size to (container width / device width). See styles.css.
+ *
+ * MIT License
+ *
+ * Copyright (c) 2017 Yan Zhu
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
+.device,.device *,.device ::after,.device ::before,.device::after,.device::before{box-sizing:border-box;display:block}
+.device{position:relative;transform:scale(1);z-index:1}
+.device .device-frame{z-index:1}
+.device .device-screen{background-color:#000;background-position:center center;background-size:cover;object-fit:cover;position:relative}
+.device-iphone-14-pro{height:868em;width:428em}
+.device-iphone-14-pro .device-frame{background:#010101;border:1em solid #1b1721;border-radius:68em;box-shadow:inset 0 0 4em 2em #c0b7cd,inset 0 0 0 6em #342c3f;height:868em;padding:19em;width:428em}
+.device-iphone-14-pro .device-screen{border-radius:49em;height:830em;width:390em}
+.device-iphone-14-pro .device-stripe::after,.device-iphone-14-pro .device-stripe::before{border:solid rgba(1,1,1,.25);border-width:0 7em;content:"";height:7em;left:0;position:absolute;width:100%;z-index:9}
+.device-iphone-14-pro .device-stripe::after{top:85em}
+.device-iphone-14-pro .device-stripe::before{bottom:85em}
+.device-iphone-14-pro .device-header{background:#010101;border-radius:20em;height:35em;left:50%;margin-left:-60em;position:absolute;top:29em;width:120em}
+.device-iphone-14-pro .device-sensors::after,.device-iphone-14-pro .device-sensors::before{content:"";position:absolute}
+.device-iphone-14-pro .device-sensors::after{background:#010101;border-radius:17em;height:33em;left:50%;margin-left:-60em;top:30em;width:74em}
+.device-iphone-14-pro .device-sensors::before{background:radial-gradient(farthest-corner at 20% 20%,#6074bf 0,transparent 40%),radial-gradient(farthest-corner at 80% 80%,#513785 0,#24555e 20%,transparent 50%);border-radius:50%;box-shadow:0 0 1em 1em rgba(255,255,255,.05);height:9em;left:50%;margin-left:36em;top:42em;width:9em}
+.device-iphone-14-pro .device-btns{background:#1b1721;border-radius:2em;height:32em;left:-2em;position:absolute;top:115em;width:3em}
+.device-iphone-14-pro .device-btns::after,.device-iphone-14-pro .device-btns::before{background:#1b1721;border-radius:2em;content:"";height:62em;left:0;position:absolute;width:3em}
+.device-iphone-14-pro .device-btns::after{top:60em}
+.device-iphone-14-pro .device-btns::before{top:140em}
+.device-iphone-14-pro .device-power{background:#1b1721;border-radius:2em;height:100em;position:absolute;right:-2em;top:200em;width:3em}
+.device-iphone-14-pro .device-home::after,.device-iphone-14-pro .device-home::before{border:solid rgba(1,1,1,.25);border-width:6em 0;content:"";height:6em;position:absolute;width:6em;z-index:9}
+.device-iphone-14-pro .device-home::after{right:86em;top:0}
+.device-iphone-14-pro .device-home::before{bottom:0;left:86em}
+.device-iphone-14-pro.device-silver .device-frame{border-color:#c8cacb;box-shadow:inset 0 0 4em 2em #fff,inset 0 0 0 6em #e2e3e4}
+.device-iphone-14-pro.device-silver .device-btns{background:#c8cacb}
+.device-iphone-14-pro.device-silver .device-btns::after,.device-iphone-14-pro.device-silver .device-btns::before{background:#c8cacb}
+.device-iphone-14-pro.device-silver .device-power{background:#c8cacb}
+.device-iphone-14-pro.device-black .device-frame{border-color:#5c5956;box-shadow:inset 0 0 4em 2em #fff,inset 0 0 0 6em #76726f}
+.device-iphone-14-pro.device-black .device-btns{background:#5c5956}
+.device-iphone-14-pro.device-black .device-btns::after,.device-iphone-14-pro.device-black .device-btns::before{background:#5c5956}
+.device-iphone-14-pro.device-black .device-power{background:#5c5956}
+.device-iphone-14-pro.device-gold .device-frame{border-color:#e7d19e;box-shadow:inset 0 0 4em 2em #fff,inset 0 0 0 6em #d2ab4c}
+.device-iphone-14-pro.device-gold .device-btns{background:#e7d19e}
+.device-iphone-14-pro.device-gold .device-btns::after,.device-iphone-14-pro.device-gold .device-btns::before{background:#e7d19e}
+.device-iphone-14-pro.device-gold .device-power{background:#e7d19e}
+.device-macbook-pro{height:434em;width:740em}
+.device-macbook-pro .device-frame{background:#0d0d0d;border-radius:20em;box-shadow:inset 0 0 0 2em #c8cacb;height:418em;margin:0 auto;padding:9em 9em 23em 9em;position:relative;width:618em}
+.device-macbook-pro .device-frame::after{background:linear-gradient(to bottom,#272727,#0d0d0d);border-radius:0 0 20em 20em;bottom:2em;content:"";height:24em;left:2em;position:absolute;width:614em}
+.device-macbook-pro .device-header{background:#0d0d0d;border-bottom-left-radius:4em;border-bottom-right-radius:4em;height:12em;left:50%;margin-left:-32em;position:absolute;top:11em;width:64em;z-index:2}
+.device-macbook-pro .device-header::after,.device-macbook-pro .device-header::before{content:"";height:4em;position:absolute;top:0;width:4em}
+.device-macbook-pro .device-header::after{background:radial-gradient(circle at bottom left,transparent 0,transparent 75%,#0d0d0d 75%,#0d0d0d 100%);left:-4em}
+.device-macbook-pro .device-header::before{background:radial-gradient(circle at bottom right,transparent 0,transparent 75%,#0d0d0d 75%,#0d0d0d 100%);right:-4em}
+.device-macbook-pro .device-screen{border:2em solid #121212;border-radius:10em 10em 0 0;height:375em;width:600em}
+.device-macbook-pro .device-power{background:radial-gradient(circle at center,#e2e3e4 85%,#c8cacb 100%);border:solid #a0a3a7;border-radius:2em 2em 12em 12em;border-width:1em 2em 0 2em;box-shadow:inset 0 -2em 8em 0 #6c7074;height:24em;margin-top:-10em;position:relative;width:740em;z-index:9}
+.device-macbook-pro .device-power::after{background:#e2e3e4;border-radius:0 0 10em 10em;box-shadow:inset 0 0 4em 2em #babdbf;content:"";height:10em;left:50%;margin-left:-60em;position:absolute;top:0;width:120em}
+.device-macbook-pro .device-power::before{background:0 0;border-radius:0 0 3em 3em;bottom:-2em;box-shadow:-300em 0 #272727,300em 0 #272727;content:"";height:2em;left:50%;margin-left:-20em;position:absolute;width:40em}
+.device-macbook-pro.device-spacegray .device-frame{box-shadow:inset 0 0 0 2em #767a7d}
+.device-macbook-pro.device-spacegray .device-power{background:radial-gradient(circle at center,#83878a 85%,#767a7d 100%);border-color:#454749;box-shadow:inset 0 -2em 8em 0 #202121}
+.device-macbook-pro.device-spacegray .device-power::after{background:#b7babc;box-shadow:inset 0 0 4em 2em #6a6d70}

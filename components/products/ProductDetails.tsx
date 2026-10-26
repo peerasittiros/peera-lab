@@ -1,4 +1,4 @@
-import { STATUS, UI, cx, tx } from '@/lib/design';
+import { UI, cx, tx } from '@/lib/design';
 import { t, ts, type Locale, type Localized } from '@/lib/i18n';
 import type { Product } from '@/lib/content';
 import { Button } from '@/components/ui/Button';
@@ -71,8 +71,6 @@ export function ProductDetails({ products, locale, title, lead, exclude }: Produ
                         locale={locale}
                         desktop={shot}
                         phone={i === 0 ? phoneShot(product) : undefined}
-                        url={product.url ?? `${product.slug}.peera.dev`}
-                        tag={t(STATUS[product.status], 'en')}
                         sizes="(min-width: 1024px) 50vw, 90vw"
                       />
                     </div>

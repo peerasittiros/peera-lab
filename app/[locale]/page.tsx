@@ -10,7 +10,6 @@ import { Hero } from '@/components/layout/Hero';
 import { SectionHeader } from '@/components/layout/SectionHeader';
 import { ContactBlock } from '@/components/layout/ContactBlock';
 import { Footer } from '@/components/layout/Footer';
-import { STATUS } from '@/lib/design';
 import { ProductGrid } from '@/components/products/ProductGrid';
 import { ProductDetails } from '@/components/products/ProductDetails';
 import { ProductStory, productShots } from '@/components/products/ProductStory';
@@ -45,8 +44,6 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
       locale={locale}
       desktop={heroDesktop}
       phone={phoneShot(featured)}
-      url={featured.url ?? `${featured.slug}.peera.dev`}
-      tag={t(STATUS[featured.status], 'en')}
       label={site.hero.devices}
       sizes="(min-width: 1024px) 36vw, 100vw"
       priority

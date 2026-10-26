@@ -50,11 +50,7 @@
         },
         "href": "#contact"
       }
-    ],
-    "devices": {
-      "en": "The same app on the phone and the computer",
-      "th": "แอปเดียวกัน ใช้ได้ทั้งบนมือถือและคอมพิวเตอร์"
-    }
+    ]
   },
   "contact": {
     "title": {
@@ -114,6 +110,16 @@
       "lead": {
         "en": "What each one does, and which tasks it takes off your desk.",
         "th": "แต่ละตัวทำอะไรได้บ้าง และช่วยลดงานอะไรบนโต๊ะของคุณ"
+      }
+    },
+    "devices": {
+      "title": {
+        "en": "The same app on the phone and the computer",
+        "th": "แอปเดียวกัน ใช้ได้ทั้งบนมือถือและคอมพิวเตอร์"
+      },
+      "lead": {
+        "en": "Stockline on a laptop and a phone: the same data, laid out for each screen.",
+        "th": "Stockline บนโน้ตบุ๊กและมือถือ ข้อมูลชุดเดียวกัน จัดหน้าตาให้เหมาะกับแต่ละจอ"
       }
     }
   },

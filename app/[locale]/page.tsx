@@ -7,6 +7,7 @@ import { isLocale, t, type Locale } from '@/lib/i18n';
 import { footerLinks, navItems } from '@/lib/nav';
 import { SiteNav } from '@/components/navigation/SiteNav';
 import { Hero } from '@/components/layout/Hero';
+import { HeroGlobe } from '@/components/layout/HeroGlobe';
 import { SectionHeader } from '@/components/layout/SectionHeader';
 import { ContactBlock } from '@/components/layout/ContactBlock';
 import { Footer } from '@/components/layout/Footer';
@@ -16,7 +17,8 @@ import { ProductStory, productShots } from '@/components/products/ProductStory';
 import { DeviceStack, phoneShot } from '@/components/products/DeviceStack';
 
 /**
- * Homepage: Nav → Hero (split; the featured product on a computer and a phone) → Product story (featured) → Feature bento → Product Lab →
+ * Homepage: Nav → Hero (the message over the interactive globe) → Devices (the featured product on a laptop and a phone) →
+ * Product story (featured) → Feature bento → Product Lab →
  * Contact → Footer (DESIGN.md › Layout). Personal details appear only in the Contact band.
  * The Hero is the page's only h1. Every section opens with an h2.
  */
@@ -37,18 +39,8 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
   const products = getProducts();
   const featured = getFeaturedProduct();
   const lab = products.filter((product) => product.slug !== featured.slug);
-  // The hero shows the featured product on a computer and a phone: the same app on both.
-  const heroDesktop = productShots(featured)[0];
-  const heroVisual = heroDesktop ? (
-    <DeviceStack
-      locale={locale}
-      desktop={heroDesktop}
-      phone={phoneShot(featured)}
-      label={site.hero.devices}
-      sizes="(min-width: 1024px) 36vw, 100vw"
-      priority
-    />
-  ) : null;
+  // Below the hero: the featured product on a laptop and a phone, the same app on both.
+  const showcaseDesktop = productShots(featured)[0];
   const year = new Date().getFullYear();
   const brand = site.name.split(' ')[0];
 
@@ -63,21 +55,32 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
         localeHrefs={{ en: '/en', th: '/th' }}
       />
       <main>
-        <Hero
-          locale={locale}
-          title={site.hero.title}
-          lead={site.hero.lead}
-          actions={site.hero.actions.map((a, i) => ({ label: a.label, href: a.href, variant: i ? 'secondary' : 'primary' }))}
-          visual={heroVisual}
-          building={{
-            label: site.home.building,
-            items: products.map((product) => ({
-              name: product.title,
-              status: product.status,
-              href: `/${locale}/products/${product.slug}`,
-            })),
-          }}
-        />
+        {/* The globe fills the hero band behind the message; the products follow below. */}
+        <div className="pl-hero-band">
+          <HeroGlobe />
+          <Hero
+            locale={locale}
+            title={site.hero.title}
+            lead={site.hero.lead}
+            actions={site.hero.actions.map((a, i) => ({ label: a.label, href: a.href, variant: i ? 'secondary' : 'primary' }))}
+          />
+        </div>
+
+        {showcaseDesktop ? (
+          <div className="pl-home-section" id="devices">
+            <section className="pl-root pl-showcase pl-reveal" lang={locale}>
+              <SectionHeader locale={locale} title={site.home.devices.title} lead={site.home.devices.lead} />
+              <div className="pl-showcase-stack">
+                <DeviceStack
+                  locale={locale}
+                  desktop={showcaseDesktop}
+                  phone={phoneShot(featured)}
+                  sizes="(min-width: 1024px) 60vw, 100vw"
+                />
+              </div>
+            </section>
+          </div>
+        ) : null}
 
         <div className="pl-home-section" id="featured">
           <ProductStory product={featured} locale={locale} />

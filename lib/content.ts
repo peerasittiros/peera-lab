@@ -123,8 +123,6 @@ export const siteSchema = z.object({
     title: localized,
     lead: localized,
     actions: z.array(action),
-    /** Label under the hero devices (desktop and phone screenshots). */
-    devices: localized.optional(),
   }),
   contact: z.object({
     title: localized,
@@ -140,6 +138,8 @@ export const siteSchema = z.object({
     building: localized,
     lab: z.object({ title: localized, lead: localized, all: localized }),
     details: z.object({ title: localized, lead: localized }),
+    /** The section under the hero that shows the featured product on a laptop and a phone. */
+    devices: z.object({ title: localized, lead: localized }),
   }),
   /** Copy for the Products and Projects pages. `contactTitle` may contain {name}, replaced by the item's title. */
   collections: z.object({ products: collectionCopy, projects: collectionCopy }),

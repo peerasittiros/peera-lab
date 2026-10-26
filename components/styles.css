@@ -151,6 +151,25 @@ main [id] { scroll-margin-top: calc(var(--nav-height) + var(--space-4)); }
   .pl-hero-title.display-xl-th { font-size: 60px; line-height: 80px; }
 }
 
+/* ---- HeroGlobe: Vanta.js GLOBE (three.js) filling the hero band, settings in lib/globe.config.ts. The band takes the
+   whole first screen under the nav. Behind the message the globe shows at --globe-fade (a mask), so the text keeps
+   its contrast. The one decorative animation on the site (DESIGN.md › Motion); hidden under reduced motion, and on
+   phones unless the config turns it on (.on-phones). ---- */
+.pl-hero-band { position: relative; overflow: hidden; }
+.pl-hero-band > .pl-hero { position: relative; z-index: 1; }
+.pl-hero-globe { display: none; position: absolute; inset: 0; z-index: 0; --globe-mask: linear-gradient(to right, rgba(0, 0, 0, var(--globe-fade, 0.25)) 0, rgba(0, 0, 0, var(--globe-fade, 0.25)) 28%, #000 58%); -webkit-mask-image: var(--globe-mask); mask-image: var(--globe-mask); }
+.pl-hero-globe.on-phones { display: block; --globe-mask: linear-gradient(to bottom, rgba(0, 0, 0, var(--globe-fade, 0.25)) 0, rgba(0, 0, 0, var(--globe-fade, 0.25)) 100%); }
+.pl-hero-band:has(.pl-hero-globe.on-phones) > .pl-hero { min-height: calc(100svh - 56px); align-content: center; }
+@media (min-width: 768px) {
+  .pl-hero-globe, .pl-hero-globe.on-phones { display: block; --globe-mask: linear-gradient(to right, rgba(0, 0, 0, var(--globe-fade, 0.25)) 0, rgba(0, 0, 0, var(--globe-fade, 0.25)) 28%, #000 58%); }
+  .pl-hero-band > .pl-hero { min-height: calc(100svh - var(--nav-height)); align-content: center; }
+}
+@media (prefers-reduced-motion: reduce) { .pl-hero-globe, .pl-hero-globe.on-phones { display: none !important; } }
+
+/* ---- Devices showcase (home, under the hero) ---- */
+.pl-showcase { display: grid; gap: var(--space-7); }
+.pl-showcase-stack { width: 100%; max-width: 960px; margin: 0 auto; }
+
 /* ---- SectionHeader ---- */
 .pl-section-head { display: grid; grid-template-columns: 1fr; align-items: end; gap: var(--space-3) var(--space-5); padding-top: var(--space-4); border-top: 1px solid var(--ink); }
 .pl-section-head-text { display: grid; gap: var(--space-3); }
@@ -256,7 +275,7 @@ main [id] { scroll-margin-top: calc(var(--nav-height) + var(--space-4)); }
 
 /* ---- Device light and motion (device art, exempt from the site colour rules; DESIGN.md › Motion).
    Light: a soft floor shadow under the stack and a glass sheen that crosses each screen once.
-   Motion: in the hero the laptop lid opens and the phone rises on load; in the bento the phone slides in when its
+   Motion: in the devices section the laptop lid opens and the phone rises when it is revealed; in the bento the phone slides in when its
    card is revealed; on hover (≥1024, fine pointers) the stack tilts a little. Under reduced motion all of it is still. ---- */
 .pl-devices-stage { perspective: 1800px; }
 .pl-devices-stage > * { transition: transform var(--duration-slow) var(--ease-out); transform-style: preserve-3d; }
@@ -269,10 +288,10 @@ main [id] { scroll-margin-top: calc(var(--nav-height) + var(--space-4)); }
 @keyframes pl-sheen { 0% { opacity: 1; background-position: 120% 0; } 85% { opacity: 1; background-position: -20% 0; } 100% { opacity: 0; background-position: -20% 0; } }
 @keyframes pl-lid { from { transform: perspective(1200px) rotateX(-78deg); opacity: 0.4; } to { transform: perspective(1200px) rotateX(0deg); opacity: 1; } }
 @keyframes pl-rise { from { opacity: 0; transform: translateY(18%) rotate(5deg); } }
-/* Hero, on load: lid opens, phone rises, then both screens catch the light. */
-.pl-hero-stack .device-macbook-pro .device-frame { transform-origin: 50% 100%; animation: pl-lid var(--duration-slow) var(--ease-out) both; animation-delay: calc(3 * var(--stagger)); }
-.pl-hero-stack .pl-devices-phone .pl-device-phone { animation: pl-rise var(--duration-slow) var(--ease-out) both; animation-delay: calc(5 * var(--stagger)); }
-.pl-hero-stack .device-frame::before { animation: pl-sheen 900ms var(--ease-in-out) both; animation-delay: calc(9 * var(--stagger)); }
+/* Devices section, when revealed (or at once if it is on screen at load): lid opens, phone rises, screens catch the light. */
+.pl-reveal.is-in .pl-showcase-stack .device-macbook-pro .device-frame { transform-origin: 50% 100%; animation: pl-lid var(--duration-slow) var(--ease-out) both; animation-delay: calc(3 * var(--stagger)); }
+.pl-reveal.is-in .pl-showcase-stack .pl-devices-phone .pl-device-phone { animation: pl-rise var(--duration-slow) var(--ease-out) both; animation-delay: calc(5 * var(--stagger)); }
+.pl-reveal.is-in .pl-showcase-stack .device-frame::before { animation: pl-sheen 900ms var(--ease-in-out) both; animation-delay: calc(9 * var(--stagger)); }
 /* Bento: the phone slides in when its card is revealed, then the screens catch the light. */
 html[data-reveal] .pl-reveal .pl-bento-shot .pl-devices-phone .pl-device-phone { transition: opacity var(--duration-slow) var(--ease-out), transform var(--duration-slow) var(--ease-out); transition-delay: calc(4 * var(--stagger)); }
 html[data-reveal] .pl-reveal:not(.is-in) .pl-bento-shot .pl-devices-phone .pl-device-phone { opacity: 0; transform: translate(14%, 10%) rotate(5deg); }
@@ -543,16 +562,16 @@ html[data-reveal] .pl-reveal:not(.is-in) .pl-stagger > * { opacity: 0; transform
 /* Load: the hero lead, actions and frames enter once; the h1 (LCP) never animates. */
 .pl-enter { animation: pl-enter var(--duration-slow) var(--ease-out) both; animation-delay: calc(var(--i, 0) * var(--stagger)); }
 @keyframes pl-enter { from { opacity: 0; transform: translateY(var(--reveal-distance)); } }
-/* Scroll-linked, only where scroll timelines exist: the nav hairline fades in; the hero's phone drifts up 24px. */
+/* Scroll-linked, only where scroll timelines exist: the nav hairline fades in; the showcase phone drifts 24px across the view. */
 @supports (animation-timeline: scroll()) {
   .pl-nav { animation: pl-nav-line linear both; animation-timeline: scroll(root); animation-range: 0 64px; }
   @media (min-width: 1024px) {
-    .pl-hero-stack .pl-devices-phone { animation: pl-drift linear both; animation-timeline: scroll(root); animation-range: 0 480px; }
+    .pl-showcase-stack .pl-devices-phone { animation: pl-drift linear both; animation-timeline: view(); animation-range: entry 0% exit 100%; }
   }
 }
 @keyframes pl-nav-line { from { border-bottom-color: transparent; } to { border-bottom-color: var(--line); } }
 /* translate, not transform, so the drift adds to the hover transform instead of replacing it. */
-@keyframes pl-drift { to { translate: 0 -24px; } }
+@keyframes pl-drift { from { translate: 0 12px; } to { translate: 0 -12px; } }
 
 /* ---- page transitions: links are plain <a>, so pages cross-fade with cross-document View Transitions where the
    browser supports them (Chrome 126+, Safari 18.2+); a product frame morphs card → product hero by its

@@ -13,10 +13,11 @@ import { Footer } from '@/components/layout/Footer';
 import { STATUS } from '@/lib/design';
 import { ProductGrid } from '@/components/products/ProductGrid';
 import { ProductDetails } from '@/components/products/ProductDetails';
-import { ProductStory } from '@/components/products/ProductStory';
+import { ProductStory, productShots } from '@/components/products/ProductStory';
+import { DeviceStack, phoneShot } from '@/components/products/DeviceStack';
 
 /**
- * Homepage: Nav → Hero (split, stacked product frames) → Product story (featured) → Feature bento → Product Lab →
+ * Homepage: Nav → Hero (split; the featured product on a computer and a phone) → Product story (featured) → Feature bento → Product Lab →
  * Contact → Footer (DESIGN.md › Layout). Personal details appear only in the Contact band.
  * The Hero is the page's only h1. Every section opens with an h2.
  */
@@ -37,16 +38,20 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
   const products = getProducts();
   const featured = getFeaturedProduct();
   const lab = products.filter((product) => product.slug !== featured.slug);
-  // The hero stacks up to two real screenshots, the featured product in front.
-  const frames = [featured, ...lab]
-    .filter((product) => product.thumbnail)
-    .slice(0, 2)
-    .map((product) => ({
-      src: product.thumbnail!,
-      alt: product.thumbnailAlt,
-      url: product.url ?? `${product.slug}.peera.dev`,
-      tag: t(STATUS[product.status], 'en'),
-    }));
+  // The hero shows the featured product on a computer and a phone: the same app on both.
+  const heroDesktop = productShots(featured)[0];
+  const heroVisual = heroDesktop ? (
+    <DeviceStack
+      locale={locale}
+      desktop={heroDesktop}
+      phone={phoneShot(featured)}
+      url={featured.url ?? `${featured.slug}.peera.dev`}
+      tag={t(STATUS[featured.status], 'en')}
+      label={site.hero.devices}
+      sizes="(min-width: 1024px) 36vw, 100vw"
+      priority
+    />
+  ) : null;
   const year = new Date().getFullYear();
   const brand = site.name.split(' ')[0];
 
@@ -66,7 +71,7 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
           title={site.hero.title}
           lead={site.hero.lead}
           actions={site.hero.actions.map((a, i) => ({ label: a.label, href: a.href, variant: i ? 'secondary' : 'primary' }))}
-          frames={frames}
+          visual={heroVisual}
           building={{
             label: site.home.building,
             items: products.map((product) => ({

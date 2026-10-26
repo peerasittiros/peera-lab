@@ -50,7 +50,11 @@
         },
         "href": "#contact"
       }
-    ]
+    ],
+    "devices": {
+      "en": "The same app on the phone and the computer",
+      "th": "แอปเดียวกัน ใช้ได้ทั้งบนมือถือและคอมพิวเตอร์"
+    }
   },
   "contact": {
     "title": {

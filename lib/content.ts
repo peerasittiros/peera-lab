@@ -70,7 +70,15 @@ export const productSchema = z.object({
   thumbnailAlt: localized.optional(),
   preview: z.enum(['table', 'calendar', 'board', 'dashboard']).optional(),
   screenshots: z
-    .array(z.object({ src: z.string().min(1), alt: localized, caption: localized.optional() }))
+    .array(
+      z.object({
+        src: z.string().min(1),
+        alt: localized,
+        caption: localized.optional(),
+        /** `phone` shots (portrait, 390 wide) go in PhoneFrame; everything else is a 16:10 desktop shot. */
+        device: z.enum(['desktop', 'phone']).optional(),
+      }),
+    )
     .optional(),
   demoUrl: z.url().optional(),
   repositoryUrl: z.url().optional(),
@@ -110,7 +118,14 @@ const collectionCopy = z.object({
 export const siteSchema = z.object({
   name: z.string().min(1),
   nav: z.array(z.object({ key: z.string().min(1), label: localized, href: z.string().min(1) })),
-  hero: z.object({ eyebrow: localized.optional(), title: localized, lead: localized, actions: z.array(action) }),
+  hero: z.object({
+    eyebrow: localized.optional(),
+    title: localized,
+    lead: localized,
+    actions: z.array(action),
+    /** Label under the hero devices (desktop and phone screenshots). */
+    devices: localized.optional(),
+  }),
   contact: z.object({
     title: localized,
     lead: localized,

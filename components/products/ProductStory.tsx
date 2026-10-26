@@ -13,9 +13,10 @@ export interface ProductStoryProps {
   locale: Locale;
 }
 
-/** The product's screenshots, or its thumbnail when it has no screenshot list. */
+/** The product's desktop (16:10) screenshots, or its thumbnail when it has none. Phone shots go to DeviceStack. */
 export function productShots(product: Product) {
-  if (product.screenshots?.length) return product.screenshots;
+  const desktop = product.screenshots?.filter((shot) => shot.device !== 'phone') ?? [];
+  if (desktop.length) return desktop;
   return product.thumbnail ? [{ src: product.thumbnail, alt: product.thumbnailAlt ?? product.title }] : [];
 }
 

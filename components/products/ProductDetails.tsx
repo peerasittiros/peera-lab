@@ -5,8 +5,8 @@ import { Button } from '@/components/ui/Button';
 import { Eyebrow } from '@/components/ui/Eyebrow';
 import { StatusBadge } from '@/components/ui/StatusBadge';
 import { SectionHeader } from '@/components/layout/SectionHeader';
-import { BrowserFrame } from './BrowserFrame';
 import { productShots } from './ProductStory';
+import { DeviceStack, phoneShot } from './DeviceStack';
 
 export interface ProductDetailsProps {
   products: Product[];
@@ -64,13 +64,15 @@ export function ProductDetails({ products, locale, title, lead, exclude }: Produ
                   aria-label={`${name} — ${t(screensLabel, locale)}`}
                   tabIndex={0}
                 >
-                  {shots.map((shot) => (
+                  {shots.map((shot, i) => (
                     <div key={shot.src} className="pl-bento-shot">
-                      <BrowserFrame
+                      {/* The first shot pairs with the phone, so each product shows it works on both. */}
+                      <DeviceStack
+                        locale={locale}
+                        desktop={shot}
+                        phone={i === 0 ? phoneShot(product) : undefined}
                         url={product.url ?? `${product.slug}.peera.dev`}
                         tag={t(STATUS[product.status], 'en')}
-                        src={shot.src}
-                        alt={t(shot.alt, locale)}
                         sizes="(min-width: 1024px) 50vw, 90vw"
                       />
                     </div>

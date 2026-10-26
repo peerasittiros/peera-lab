@@ -148,6 +148,14 @@
         "en": "Stockline stock in and out screen with the low-stock list",
         "th": "หน้ารับ-เบิกของ Stockline พร้อมรายการที่ใกล้หมด"
       }
+    },
+    {
+      "src": "/images/products/stockline/phone-home.jpg",
+      "alt": {
+        "en": "Stockline stock in and out screen on a phone",
+        "th": "หน้ารับ-เบิกของ Stockline บนมือถือ"
+      },
+      "device": "phone"
     }
   ]
 }

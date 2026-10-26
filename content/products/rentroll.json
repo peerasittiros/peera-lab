@@ -43,6 +43,14 @@
         "en": "Rentroll owner dashboard on a desktop screen",
         "th": "หน้าแดชบอร์ดเจ้าของหอพักของ Rentroll บนจอคอมพิวเตอร์"
       }
+    },
+    {
+      "src": "/images/products/rentroll/phone-home.jpg",
+      "alt": {
+        "en": "Rentroll tenant view with the amount due on a phone",
+        "th": "หน้าผู้เช่าของ Rentroll พร้อมยอดที่ต้องชำระ บนมือถือ"
+      },
+      "device": "phone"
     }
   ],
   "sections": [

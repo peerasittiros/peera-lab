@@ -1,19 +1,9 @@
-import type { CSSProperties } from 'react';
+import type { CSSProperties, ReactNode } from 'react';
 import { pad, cx, tx, type ProductStatus } from '@/lib/design';
 import { t, ts, type Locale, type Localized } from '@/lib/i18n';
 import { Button, type ButtonProps } from '@/components/ui/Button';
 import { Eyebrow } from '@/components/ui/Eyebrow';
 import { StatusBadge } from '@/components/ui/StatusBadge';
-import { BrowserFrame } from '@/components/products/BrowserFrame';
-
-export interface HeroFrame {
-  src: string;
-  alt?: Localized;
-  /** Shown in the frame's URL bar. */
-  url?: string;
-  /** Mono tag at the right of the bar. */
-  tag?: string;
-}
 
 export interface HeroProps {
   locale: Locale;
@@ -26,8 +16,8 @@ export interface HeroProps {
   lead?: Localized;
   /** The first action is primary by default; the rest are secondary. */
   actions?: { label: Localized; href: string; variant?: ButtonProps['variant'] }[];
-  /** Up to two product screenshots, stacked on the right ≥1024 (the first in front); only the first shows below. */
-  frames?: HeroFrame[];
+  /** Product visual on the right ≥1024 and below the message on smaller screens (the home uses DeviceStack). */
+  visual?: ReactNode;
   /** "Now building" list, so products are visible in the first viewport. */
   building?: {
     label: Localized;
@@ -40,11 +30,10 @@ const step = (i: number) => ({ '--i': i }) as CSSProperties;
 
 /**
  * Identity block: what the lab makes, and a direct path to the products. h1 of the home page.
- * Split ≥1024: the message on the left; stacked product frames and "Now building" on the right.
+ * Split ≥1024: the message on the left; the product visual (desktop and phone) and "Now building" on the right.
  * The h1 never animates (it is the LCP); the lead, actions and frames enter once on load (DESIGN.md › Motion).
  */
-export function Hero({ locale, index, eyebrow, title, lead, actions, frames = [], building }: HeroProps) {
-  const [front, back] = frames;
+export function Hero({ locale, index, eyebrow, title, lead, actions, visual, building }: HeroProps) {
   return (
     <section className={cx('pl-root', 'pl-hero')} lang={locale}>
       <div className="pl-hero-copy">
@@ -75,25 +64,11 @@ export function Hero({ locale, index, eyebrow, title, lead, actions, frames = []
           </div>
         ) : null}
       </div>
-      {front || building ? (
+      {visual || building ? (
         <div className="pl-hero-side">
-          {front ? (
+          {visual ? (
             <div className="pl-hero-stack pl-enter" style={step(2)}>
-              {back ? (
-                <div className="pl-hero-frame pl-hero-frame-back" aria-hidden="true">
-                  <BrowserFrame url={back.url} tag={back.tag} src={back.src} alt="" sizes="(min-width: 1024px) 36vw, 0px" />
-                </div>
-              ) : null}
-              <div className="pl-hero-frame pl-hero-frame-front">
-                <BrowserFrame
-                  url={front.url}
-                  tag={front.tag}
-                  src={front.src}
-                  alt={front.alt ? t(front.alt, locale) : ''}
-                  sizes="(min-width: 1024px) 36vw, 100vw"
-                  priority
-                />
-              </div>
+              {visual}
             </div>
           ) : null}
           {building ? (

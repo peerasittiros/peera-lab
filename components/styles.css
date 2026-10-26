@@ -129,9 +129,6 @@ main [id] { scroll-margin-top: calc(var(--nav-height) + var(--space-4)); }
 .pl-hero-actions .pl-btn { flex: 1 1 auto; }
 .pl-hero-side { display: grid; gap: var(--space-6); align-content: start; }
 .pl-hero-stack { position: relative; }
-.pl-hero-frame-back { display: none; }
-.pl-hero-frame-front { position: relative; z-index: 1; }
-.pl-hero-frame-front .pl-frame { box-shadow: var(--shadow-lift); }
 .pl-hero-building { border-top: 1px solid var(--ink); padding-top: var(--space-3); }
 .pl-hero-building-row { display: grid; grid-template-columns: 40px 1fr auto; align-items: center; gap: var(--space-3); min-height: 44px; padding: 10px 0; border-bottom: 1px solid var(--line); color: var(--ink); text-decoration: none; }
 .pl-hero-building-row .pl-index { color: var(--ink-faint); }
@@ -148,9 +145,6 @@ main [id] { scroll-margin-top: calc(var(--nav-height) + var(--space-4)); }
   .pl-hero-copy { grid-column: 1 / span 7; }
   .pl-hero-meta { margin-bottom: var(--space-7); }
   .pl-hero-side { grid-column: 8 / -1; }
-  /* The back frame sits space-6 right and space-5 down from the front one. */
-  .pl-hero-stack { padding: 0 var(--space-6) var(--space-5) 0; }
-  .pl-hero-frame-back { display: block; position: absolute; top: var(--space-5); left: var(--space-6); right: 0; z-index: 0; }
 }
 @media (min-width: 1280px) {
   .pl-hero-title.display-xl { font-size: 72px; line-height: 72px; }
@@ -243,6 +237,21 @@ main [id] { scroll-margin-top: calc(var(--nav-height) + var(--space-4)); }
 .pl-skel-chart { flex: 1; display: flex; align-items: flex-end; gap: 3%; padding: 4% 4% 0; border: 1px solid var(--line); border-radius: var(--radius-xs); }
 .pl-skel-chart span { flex: 1; background: var(--line); border-radius: var(--radius-xs) var(--radius-xs) 0 0; }
 .pl-skel-chart span.on { background: var(--accent); }
+
+/* ---- PhoneFrame: a generic phone (ink body, speaker slot in the top bezel). The corner radii are device geometry,
+   not UI radii (DESIGN.md › Product visuals). ---- */
+.pl-phone { position: relative; display: block; padding: 18px 6px 6px; background: var(--ink); border-radius: 30px; box-shadow: var(--shadow-lift); }
+.pl-phone-slot { position: absolute; top: 7px; left: 50%; width: 26%; height: 5px; transform: translateX(-50%); border-radius: var(--radius-full); background: var(--ink-muted); }
+.pl-phone-screen { position: relative; aspect-ratio: 390 / 844; border-radius: 24px; overflow: hidden; background: var(--surface-sunken); }
+.pl-phone-screen img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top center; }
+
+/* ---- DeviceStack: a desktop frame with the phone over its lower right corner (the same app on both). ---- */
+.pl-devices { display: grid; gap: var(--space-4); }
+.pl-devices-stage { position: relative; }
+/* The desktop leaves room on the right and below; the phone (28% wide, about as tall as the desktop) stands in it. */
+.pl-devices.has-phone .pl-devices-desktop { margin-right: 18%; margin-bottom: 14%; }
+.pl-devices-phone { position: absolute; right: 0; bottom: 0; width: 28%; z-index: 1; }
+.pl-devices-label { color: var(--ink-muted); }
 
 /* ---- ProductCard: lifts its frame and eases the screenshot in on hover; responds to its own width. ---- */
 .pl-card { position: relative; container-type: inline-size; }
@@ -504,11 +513,11 @@ html[data-reveal] .pl-reveal:not(.is-in) .pl-stagger > * { opacity: 0; transform
 /* Load: the hero lead, actions and frames enter once; the h1 (LCP) never animates. */
 .pl-enter { animation: pl-enter var(--duration-slow) var(--ease-out) both; animation-delay: calc(var(--i, 0) * var(--stagger)); }
 @keyframes pl-enter { from { opacity: 0; transform: translateY(var(--reveal-distance)); } }
-/* Scroll-linked, only where scroll timelines exist: the nav hairline fades in; the hero's back frame drifts up 24px. */
+/* Scroll-linked, only where scroll timelines exist: the nav hairline fades in; the hero's phone drifts up 24px. */
 @supports (animation-timeline: scroll()) {
   .pl-nav { animation: pl-nav-line linear both; animation-timeline: scroll(root); animation-range: 0 64px; }
   @media (min-width: 1024px) {
-    .pl-hero-frame-back { animation: pl-drift linear both; animation-timeline: scroll(root); animation-range: 0 480px; }
+    .pl-hero-stack .pl-devices-phone { animation: pl-drift linear both; animation-timeline: scroll(root); animation-range: 0 480px; }
   }
 }
 @keyframes pl-nav-line { from { border-bottom-color: transparent; } to { border-bottom-color: var(--line); } }

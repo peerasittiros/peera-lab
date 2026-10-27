@@ -27,6 +27,10 @@ const PATHS = {
   megaphone: 'M4 10v4h3l7 5V5L7 10zM17 9a4 4 0 0 1 0 6',
   users: 'M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM2 21a7 7 0 0 1 14 0M16 3.5a4 4 0 0 1 0 7.5M22 21a7 7 0 0 0-4-6.3',
   card: 'M3 6h18v12H3zM3 10h18M7 15h4',
+  minus: 'M5 12h14',
+  plus: 'M12 5v14M5 12h14',
+  menu: 'M4 7h16M4 12h16M4 17h16',
+  reset: 'M4 12a8 8 0 1 0 2.3-5.7M4 4v4h4',
 } as const;
 
 export type MockIconName = keyof typeof PATHS;

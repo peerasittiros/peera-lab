@@ -131,29 +131,29 @@
   ],
   "thumbnail": "/images/products/stockline/desktop-items.jpg",
   "thumbnailAlt": {
-    "en": "Stockline items list on a desktop screen",
-    "th": "หน้ารายการสินค้าของ Stockline บนจอคอมพิวเตอร์"
+    "en": "Stockline items list on a desktop screen, with one item open in the side pane",
+    "th": "หน้ารายการสินค้าของ Stockline บนจอคอมพิวเตอร์ เปิดรายละเอียดสินค้าไว้ด้านข้าง"
   },
   "screenshots": [
     {
       "src": "/images/products/stockline/desktop-items.jpg",
       "alt": {
-        "en": "Stockline items list on a desktop screen",
-        "th": "หน้ารายการสินค้าของ Stockline บนจอคอมพิวเตอร์"
+        "en": "Stockline items list on a desktop screen, with one item open in the side pane",
+        "th": "หน้ารายการสินค้าของ Stockline บนจอคอมพิวเตอร์ เปิดรายละเอียดสินค้าไว้ด้านข้าง"
       }
     },
     {
       "src": "/images/products/stockline/desktop-home.jpg",
       "alt": {
-        "en": "Stockline stock in and out screen with the low-stock list",
-        "th": "หน้ารับ-เบิกของ Stockline พร้อมรายการที่ใกล้หมด"
+        "en": "Stockline quick move on a desktop screen: the low-stock list and the stock in form beside it",
+        "th": "หน้ารับ-เบิกด่วนของ Stockline บนจอคอมพิวเตอร์ รายการที่ใกล้หมดอยู่คู่กับฟอร์มรับของเข้า"
       }
     },
     {
       "src": "/images/products/stockline/phone-home.jpg",
       "alt": {
-        "en": "Stockline stock in and out screen on a phone",
-        "th": "หน้ารับ-เบิกของ Stockline บนมือถือ"
+        "en": "Stockline quick move on a phone, with the low-stock items as cards",
+        "th": "หน้ารับ-เบิกด่วนของ Stockline บนมือถือ แสดงสินค้าที่ใกล้หมดเป็นการ์ด"
       },
       "device": "phone"
     }

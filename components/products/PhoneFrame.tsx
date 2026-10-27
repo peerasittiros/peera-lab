@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
 import Image from 'next/image';
 import { cx } from '@/lib/design';
+import { MockScreen } from './mocks/MockScreen';
 
 export interface PhoneFrameProps {
   /** Portrait screenshot (390 wide at 2×), local path under public/. */
@@ -25,7 +26,7 @@ export function PhoneFrame({ src, alt, children, sizes = '30vw', priority, class
         <div className="device-frame">
           {children ? (
             <div className="device-screen pl-mock-screen" role="img" aria-label={alt ?? ''}>
-              {children}
+              <MockScreen designWidth={780}>{children}</MockScreen>
             </div>
           ) : src ? (
             <Image className="device-screen" src={src} alt={alt ?? ''} width={780} height={1660} sizes={sizes} priority={priority} />

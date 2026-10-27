@@ -1,7 +1,7 @@
 /* Designed mock screens inside the device frames (StocklineMock, RentrollMock). Product art, not site UI: each product
    keeps its own app colours, exempt from the site palette like the device frames (DESIGN.md › Product visuals).
-   --u is one device unit (1/740 of the laptop, 1/428 of the phone, set by the frames' em size). It is a registered
-   length, so it resolves once at .mk and every size below is a plain multiple of it, with no em compounding. */
+   --u is one device unit: 2 px on the design-size stage that MockScreen scales to the frame. It is a registered
+   length, so every size below is a plain multiple of it, with no em compounding. */
 @property --u {
   syntax: '<length>';
   inherits: true;
@@ -9,7 +9,12 @@
 }
 
 .pl-mock-screen { overflow: hidden; background: #ffffff; }
-.mk { --u: 1em; width: 100%; height: 100%; display: flex; flex-direction: column; overflow: hidden; background: var(--mk-surface); color: var(--mk-ink); font-family: var(--font-sans); line-height: 1.35; text-align: left; }
+/* MockScreen: the stage is laid out at design size (2 px per device unit) and scaled to the frame as a whole. */
+.pl-mock-fit { position: absolute; inset: 0; overflow: hidden; }
+/* will-change gives the stage its own layer: without it, Chromium drops the clipped text (ellipsis, the rounded
+   list) of the laptop screen, which sits inside the frame's 3D transform. */
+.pl-mock-stage { --u: 2px; position: absolute; top: 0; left: 0; transform-origin: 0 0; will-change: transform; }
+.mk { width: 100%; -webkit-text-size-adjust: 100%; text-size-adjust: 100%; height: 100%; display: flex; flex-direction: column; overflow: hidden; background: var(--mk-surface); color: var(--mk-ink); font-family: var(--font-sans); line-height: 1.35; text-align: left; }
 .mk * { box-sizing: border-box; margin: 0; padding: 0; list-style: none; }
 .mk b { font-weight: 600; }
 .mk code { font-family: var(--font-mono); color: var(--mk-muted); }
@@ -22,7 +27,10 @@
 .mk-shop { display: flex; align-items: center; min-width: 0; }
 .mk-logo { display: flex; align-items: center; justify-content: center; background: var(--mk-primary); color: var(--mk-on-primary); }
 .mk-shop-text { display: grid; min-width: 0; }
-.mk-shop-text b { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+/* Text stays on one line. Only the phone screens truncate with an ellipsis: on the laptop screens Chromium drops
+   text clipped by overflow inside the scaled stage at 2x and 3x (phones), so laptop text fits by design instead. */
+.mk-shop-text b, .mk-shop-text small { white-space: nowrap; }
+.mk-phone .mk-shop-text b, .mk-phone .mk-shop-text small { overflow: hidden; text-overflow: ellipsis; }
 .mk-shop-text small { color: var(--mk-muted); }
 .mk-app { font-family: var(--font-mono); color: var(--mk-muted); letter-spacing: 0.04em; }
 .mk-main { flex: 1; min-width: 0; display: flex; flex-direction: column; }
@@ -123,7 +131,8 @@
 .mk-row { display: flex; align-items: center; background: var(--mk-surface); }
 .mk-thumb { display: flex; align-items: center; justify-content: center; flex: none; background: var(--mk-sunken); color: var(--mk-muted); border: 1px solid var(--mk-line); }
 .mk-row-text { display: grid; flex: 1; min-width: 0; }
-.mk-row-text b, .mk-row-text code { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.mk-row-text b, .mk-row-text code { white-space: nowrap; }
+.mk-phone .mk-row-text b, .mk-phone .mk-row-text code { overflow: hidden; text-overflow: ellipsis; }
 .mk-row-qty { display: grid; justify-items: end; white-space: nowrap; }
 .mk-chip { display: inline-flex; align-items: center; justify-self: end; font-weight: 600; white-space: nowrap; }
 
@@ -149,7 +158,9 @@
 .mk-desktop .mk-searchrow { gap: calc(var(--u) * 5); }
 .mk-desktop .mk-search, .mk-desktop .mk-scan { height: calc(var(--u) * 22); padding: 0 calc(var(--u) * 7); gap: calc(var(--u) * 5); border-radius: calc(var(--u) * 4); font-size: calc(var(--u) * 7.5); }
 .mk-stockline.mk-desktop .mk-label { font-size: calc(var(--u) * 7.5); margin: calc(var(--u) * 9) 0 calc(var(--u) * 5); }
-.mk-desktop .mk-rows { border: 1px solid var(--mk-line); border-radius: calc(var(--u) * 6); overflow: hidden; }
+.mk-desktop .mk-rows { border: 1px solid var(--mk-line); border-radius: calc(var(--u) * 6); }
+.mk-desktop .mk-row:first-child { border-radius: calc(var(--u) * 6 - 1px) calc(var(--u) * 6 - 1px) 0 0; }
+.mk-desktop .mk-row:last-child { border-radius: 0 0 calc(var(--u) * 6 - 1px) calc(var(--u) * 6 - 1px); }
 .mk-desktop .mk-row { height: calc(var(--u) * 33); padding: 0 calc(var(--u) * 9); gap: calc(var(--u) * 7); border-bottom: 1px solid var(--mk-line); }
 .mk-desktop .mk-row:last-child { border-bottom: 0; }
 .mk-desktop .mk-row.is-on { background: var(--mk-soft); }
@@ -206,3 +217,13 @@
 .mk-phone .mk-row-qty { gap: calc(var(--u) * 5); }
 .mk-phone .mk-row-qty b { font-size: calc(var(--u) * 21); }
 .mk-phone .mk-chip { height: calc(var(--u) * 28); padding: 0 calc(var(--u) * 9); gap: calc(var(--u) * 5); border-radius: calc(var(--u) * 6); font-size: calc(var(--u) * 14); }
+
+/* Laptop text has no ellipsis (see the note above), so it fits by layout: the panel's own column can shrink and its
+   item line wraps; the sidebar badge keeps its two lines (the shared .mk-side span rule must not turn it into a
+   flex row) and the shop name may wrap. */
+.mk-sl-panel { grid-template-columns: minmax(0, 1fr); }
+.mk-sl-head .mk-row-text code { white-space: normal; }
+.mk-stockline.mk-desktop .mk-side .mk-shop { display: flex; gap: calc(var(--u) * 7); height: auto; padding: 0; color: inherit; }
+.mk-stockline.mk-desktop .mk-side .mk-logo { display: flex; height: calc(var(--u) * 20); padding: 0; color: var(--mk-on-primary); }
+.mk-stockline.mk-desktop .mk-side .mk-shop-text { display: grid; height: auto; padding: 0; min-width: 0; }
+.mk-stockline.mk-desktop .mk-side .mk-shop-text b { white-space: normal; line-height: 1.2; }

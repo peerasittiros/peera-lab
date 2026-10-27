@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
 import Image from 'next/image';
 import { cx } from '@/lib/design';
+import { MockScreen } from './mocks/MockScreen';
 
 export interface LaptopFrameProps {
   /** 16:10 desktop screenshot, local path under public/. */
@@ -25,7 +26,7 @@ export function LaptopFrame({ src, alt, children, sizes = '60vw', priority, clas
         <div className="device-frame">
           {children ? (
             <div className="device-screen pl-mock-screen" role="img" aria-label={alt ?? ''}>
-              {children}
+              <MockScreen designWidth={1192}>{children}</MockScreen>
             </div>
           ) : src ? (
             <Image className="device-screen" src={src} alt={alt ?? ''} width={1280} height={800} sizes={sizes} priority={priority} />

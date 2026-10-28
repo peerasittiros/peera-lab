@@ -120,7 +120,57 @@
       "lead": {
         "en": "Stockline on a laptop and a phone: the same data, laid out for each screen.",
         "th": "Stockline บนโน้ตบุ๊กและมือถือ ข้อมูลชุดเดียวกัน จัดหน้าตาให้เหมาะกับแต่ละจอ"
-      }
+      },
+      "spotsLabel": {
+        "en": "What to look at",
+        "th": "จุดที่น่าสนใจ"
+      },
+      "spots": [
+        {
+          "target": "low",
+          "title": {
+            "en": "Running low comes first",
+            "th": "ของใกล้หมดขึ้นมาก่อน"
+          },
+          "body": {
+            "en": "Items under their minimum sit at the top, marked in words as well as colour, so the morning check takes a glance.",
+            "th": "สินค้าที่ต่ำกว่าขั้นต่ำจะอยู่บนสุด บอกทั้งสีและข้อความ เช็กร้านตอนเช้าแค่กวาดตาดูก็รู้"
+          }
+        },
+        {
+          "target": "move",
+          "title": {
+            "en": "Record a move in three taps",
+            "th": "บันทึกรับ-เบิกในสามแตะ"
+          },
+          "body": {
+            "en": "Pick in, out or adjust, set the amount in single units or whole packs, then save. The balance updates at once.",
+            "th": "เลือกรับเข้า เบิกออก หรือปรับยอด ใส่จำนวนเป็นชิ้นหรือเป็นแพ็ค แล้วกดบันทึก ยอดคงเหลือเปลี่ยนทันที"
+          }
+        },
+        {
+          "target": "scan",
+          "title": {
+            "en": "Scan with the phone camera",
+            "th": "สแกนด้วยกล้องมือถือ"
+          },
+          "body": {
+            "en": "Point the camera at a barcode. The app stops on the item it finds and asks what to do next.",
+            "th": "หันกล้องไปที่บาร์โค้ด แอปจะหยุดที่สินค้าที่เจอ แล้วถามว่าจะรับเข้า เบิกออก หรือปรับยอด"
+          }
+        },
+        {
+          "target": "tabs",
+          "title": {
+            "en": "Built for one hand",
+            "th": "ใช้มือเดียวก็ได้"
+          },
+          "body": {
+            "en": "On the phone the main pages sit in tabs at the bottom, within reach of a thumb, over the same data as the computer.",
+            "th": "บนมือถือ หน้าหลักอยู่ในแท็บด้านล่าง นิ้วโป้งเอื้อมถึง และใช้ข้อมูลชุดเดียวกับบนคอมพิวเตอร์"
+          }
+        }
+      ]
     }
   },
   "collections": {

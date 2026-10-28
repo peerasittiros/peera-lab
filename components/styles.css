@@ -303,6 +303,42 @@ html[data-reveal] .pl-reveal:not(.is-in) .pl-bento-shot .pl-devices-phone .pl-de
   .pl-devices:hover .pl-devices-phone { transform: translate(-4%, -3%) rotateY(-8deg); }
 }
 
+/* ---- DeviceSpots: numbered callouts on the showcase mock screens, with captions beside them (≥1024) or below.
+   The marks live inside the mocks, so they ride the lid, tilt and drift; sizes divide by --mock-scale (MockScreen)
+   to stay the same on screen. The chosen part gets a dashed blueprint outline that closes in, and its device
+   steps forward. The marks pop in once the section is revealed. ---- */
+.pl-spots { display: grid; gap: var(--space-6); align-items: center; }
+.pl-spots .pl-showcase-stack { max-width: 960px; }
+@media (min-width: 1024px) { .pl-spots { grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); gap: var(--space-7); } .pl-spots .pl-showcase-stack { max-width: none; } }
+.pl-spots-list { display: grid; gap: var(--space-2); margin: 0; padding: 0; list-style: none; }
+/* Below 1024 the devices stay pinned under the nav while the captions scroll beneath them (DeviceSpots picks the one in view). */
+@media (max-width: 1023px) {
+  .pl-spots .pl-spots-stage { position: sticky; top: var(--nav-height); z-index: 3; padding: var(--space-4) 0 var(--space-5); background: var(--surface); }
+  .pl-spots-list { padding-bottom: 25vh; }
+}
+.pl-spot { display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: start; gap: var(--space-3); width: 100%; min-height: 44px; padding: var(--space-3) var(--space-4); font: inherit; text-align: start; color: var(--ink); background: transparent; border: 1px solid transparent; border-radius: var(--radius-sm); cursor: pointer; transition: background-color var(--duration-fast) var(--ease-out), border-color var(--duration-fast) var(--ease-out); }
+.pl-spot:hover { border-color: var(--line); }
+.pl-spot[aria-pressed="true"] { background: var(--surface-raised); border-color: var(--blueprint); }
+.pl-spot-n { display: grid; place-items: center; width: 28px; height: 28px; font-size: 12px; line-height: 1; color: var(--blueprint); border: 1px solid var(--blueprint); border-radius: var(--radius-sm); transition: background-color var(--duration-fast) var(--ease-out), color var(--duration-fast) var(--ease-out); }
+.pl-spot[aria-pressed="true"] .pl-spot-n { color: var(--surface-raised); background: var(--blueprint); }
+.pl-spot-text { display: grid; gap: var(--space-1); min-width: 0; }
+.pl-spot-body { color: var(--ink-muted); }
+.pl-spots [data-spot-n] { --s: var(--mock-scale, 1); position: relative; cursor: pointer; outline: calc(2px / var(--s)) dashed transparent; outline-offset: calc(14px / var(--s)); transition: outline-color var(--duration-base) var(--ease-out), outline-offset var(--duration-base) var(--ease-out); }
+.pl-spots [data-spot-n][data-spot-active] { outline-color: var(--blueprint); outline-offset: calc(3px / var(--s)); }
+.pl-spots [data-spot-n]::after { content: attr(data-spot-n); position: absolute; top: calc(-7px / var(--s)); left: calc(4px / var(--s)); z-index: 4; display: grid; place-items: center; width: calc(22px / var(--s)); height: calc(22px / var(--s)); font: 600 calc(12px / var(--s)) / 1 var(--font-mono); color: var(--blueprint); background: var(--surface-raised); border: calc(1.5px / var(--s)) solid var(--blueprint); border-radius: calc(4px / var(--s)); transition: color var(--duration-fast) var(--ease-out), background-color var(--duration-fast) var(--ease-out); }
+.pl-spots [data-spot-n][data-spot-active]::after { color: var(--surface-raised); background: var(--blueprint); }
+.pl-reveal.is-in .pl-spots [data-spot-n]::after { animation: pl-spot-in var(--duration-slow) var(--ease-out) both; animation-delay: calc((12 + 2 * var(--spot-i, 0)) * var(--stagger)); }
+@keyframes pl-spot-in { from { opacity: 0; transform: scale(0.3); } }
+@media (min-width: 1024px) {
+  /* The device in focus comes forward; the other recedes and fades, so it never hides the part being explained.
+     A faded phone lets clicks through to the laptop, except on its own marks. */
+  .pl-spots .pl-devices-stage > * { transition: transform var(--duration-slow) var(--ease-out), opacity var(--duration-slow) var(--ease-out); }
+  .pl-spots:has(.pl-devices-phone [data-spot-active]) .pl-devices-phone { transform: translate(-4%, -5%) scale(1.06); }
+  .pl-spots:has(.pl-devices-phone [data-spot-active]) .pl-devices-desktop { opacity: 0.6; }
+  .pl-spots:has(.pl-devices-desktop [data-spot-active]) .pl-devices-phone { transform: translate(10%, 6%) scale(0.9); opacity: 0.4; pointer-events: none; }
+  .pl-spots:has(.pl-devices-desktop [data-spot-active]) .pl-devices-phone [data-spot-n] { pointer-events: auto; }
+}
+
 /* ---- ProductCard: lifts its frame and eases the screenshot in on hover; responds to its own width. ---- */
 .pl-card { position: relative; container-type: inline-size; }
 .pl-card-link { display: grid; gap: var(--space-4); color: inherit; text-decoration: none; }

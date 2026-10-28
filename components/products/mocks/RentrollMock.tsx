@@ -98,14 +98,14 @@ export function RentrollMock({ locale, device }: { locale: Locale; device: 'desk
             <span>{c.notice}</span>
           </div>
         </div>
-        <nav className="mk-tabs">
+        <div className="mk-tabs">
           {c.tabs.map((label, i) => (
             <span key={label} className={i === 0 ? 'is-on' : undefined}>
               <MockIcon name={TAB_ICONS[i]} />
               {label}
             </span>
           ))}
-        </nav>
+        </div>
       </div>
     );
   }
@@ -116,14 +116,14 @@ export function RentrollMock({ locale, device }: { locale: Locale; device: 'desk
         <span className="mk-app">Rentroll</span>
       </div>
       <div className="mk-body">
-        <nav className="mk-side">
+        <div className="mk-side">
           {c.nav.map((label, i) => (
             <span key={label} className={i === 0 ? 'is-on' : undefined}>
               <MockIcon name={NAV_ICONS[i]} />
               {label}
             </span>
           ))}
-        </nav>
+        </div>
         <div className="mk-main">
           <h3>{c.title}</h3>
           <div className="mk-kpis">

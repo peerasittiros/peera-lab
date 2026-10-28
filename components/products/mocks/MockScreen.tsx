@@ -34,6 +34,8 @@ export function MockScreen({ designWidth, children }: { designWidth: number; chi
           width: designWidth,
           height: fit?.height ?? 0,
           transform: `scale(${fit?.scale ?? 0})`,
+          // Callouts drawn inside the mock divide by this to keep their size on screen (DeviceSpots).
+          ['--mock-scale' as string]: fit?.scale ?? 1,
           visibility: fit ? undefined : 'hidden',
         }}
       >

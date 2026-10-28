@@ -6,8 +6,10 @@ import { MockIcon, type MockIconName } from './MockIcon';
  * mini-mart, as the v2 app draws it. The laptop shows the two-pane layout (low-stock list and the move panel with
  * its label strip); the phone shows the large item cards and the bottom tabs. Drawn in device units so it keeps its
  * proportions at any frame size. Colours are Stockline's own (mocks.css); the text is the app's, in the page's
- * language.
+ * language. `data-spot` marks the parts the home page calls out (STOCKLINE_SPOTS, DeviceSpots).
  */
+
+export const STOCKLINE_SPOTS = ['low', 'move', 'scan', 'tabs'];
 
 const COPY = {
   th: {
@@ -81,9 +83,9 @@ function Status({ item, locale }: { item: Item; locale: Locale }) {
   );
 }
 
-function Rows({ locale, count }: { locale: Locale; count: number }) {
+function Rows({ locale, count, spot }: { locale: Locale; count: number; spot?: string }) {
   return (
-    <ul className="mk-rows">
+    <ul className="mk-rows" data-spot={spot}>
       {ITEMS.slice(0, count).map((item, i) => (
         <li key={item.code} className={i === 0 ? 'mk-row is-on' : 'mk-row'}>
           <span className="mk-thumb">
@@ -138,7 +140,7 @@ function AppBar({ locale, menu }: { locale: Locale; menu: boolean }) {
   );
 }
 
-function Search({ locale, label }: { locale: Locale; label: boolean }) {
+function Search({ locale, label, spot }: { locale: Locale; label: boolean; spot?: string }) {
   const c = COPY[locale];
   return (
     <div className="mk-searchrow">
@@ -146,7 +148,7 @@ function Search({ locale, label }: { locale: Locale; label: boolean }) {
         <MockIcon name="search" />
         {c.search}
       </span>
-      <span className="mk-scan">
+      <span className="mk-scan" data-spot={spot}>
         <MockIcon name="scan" />
         {label ? c.scan : null}
       </span>
@@ -159,7 +161,7 @@ function Panel({ locale }: { locale: Locale }) {
   const c = COPY[locale];
   const item = ITEMS[0];
   return (
-    <section className="mk-sl-panel">
+    <section className="mk-sl-panel" data-spot="move">
       <span className="mk-sl-strip" />
       <div className="mk-sl-head">
         <span className="mk-thumb">
@@ -217,18 +219,18 @@ export function StocklineMock({ locale, device }: { locale: Locale; device: 'des
           <Shop locale={locale} />
           <h3>{c.title}</h3>
           <p className="mk-sub">{c.subtitle}</p>
-          <Search locale={locale} label />
+          <Search locale={locale} label spot="scan" />
           <p className="mk-label">{c.low}</p>
           <Rows locale={locale} count={4} />
         </div>
-        <nav className="mk-tabs">
+        <div className="mk-tabs" data-spot="tabs">
           {c.tabs.map((label, i) => (
             <span key={label} className={i === 0 ? 'is-on' : undefined}>
               <MockIcon name={TAB_ICONS[i]} />
               {label}
             </span>
           ))}
-        </nav>
+        </div>
       </div>
     );
   }
@@ -236,7 +238,7 @@ export function StocklineMock({ locale, device }: { locale: Locale; device: 'des
     <div className="mk mk-stockline mk-desktop" lang={locale}>
       <AppBar locale={locale} menu={false} />
       <div className="mk-body">
-        <nav className="mk-side">
+        <div className="mk-side">
           <span className="mk-sl-side-shop">
             <Shop locale={locale} />
           </span>
@@ -246,7 +248,7 @@ export function StocklineMock({ locale, device }: { locale: Locale; device: 'des
               {label}
             </span>
           ))}
-        </nav>
+        </div>
         <div className="mk-main">
           <h3>{c.title}</h3>
           <p className="mk-sub">{c.subtitle}</p>
@@ -254,7 +256,7 @@ export function StocklineMock({ locale, device }: { locale: Locale; device: 'des
             <div className="mk-sl-list">
               <Search locale={locale} label />
               <p className="mk-label">{c.low}</p>
-              <Rows locale={locale} count={5} />
+              <Rows locale={locale} count={5} spot="low" />
             </div>
             <Panel locale={locale} />
           </div>

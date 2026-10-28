@@ -15,7 +15,8 @@ import { ProductGrid } from '@/components/products/ProductGrid';
 import { ProductDetails } from '@/components/products/ProductDetails';
 import { ProductStory, productShots } from '@/components/products/ProductStory';
 import { DeviceStack, phoneShot } from '@/components/products/DeviceStack';
-import { mockScreens } from '@/components/products/mocks';
+import { mockScreens, mockSpots } from '@/components/products/mocks';
+import { DeviceSpots } from '@/components/products/DeviceSpots';
 
 /**
  * Homepage: Nav → Hero (the message over the interactive globe) → Devices (the featured product on a laptop and a phone) →
@@ -42,6 +43,9 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
   const lab = products.filter((product) => product.slug !== featured.slug);
   // Below the hero: the featured product on a laptop and a phone, the same app on both.
   const showcaseDesktop = productShots(featured)[0];
+  const showcaseScreens = mockScreens(featured.slug, locale);
+  // Callouts only for marks the featured product's mock has.
+  const showcaseSpots = (site.home.devices.spots ?? []).filter((spot) => mockSpots(featured.slug).includes(spot.target));
   const year = new Date().getFullYear();
   const brand = site.name.split(' ')[0];
 
@@ -71,15 +75,27 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
           <div className="pl-home-section" id="devices">
             <section className="pl-root pl-showcase pl-reveal" lang={locale}>
               <SectionHeader locale={locale} title={site.home.devices.title} lead={site.home.devices.lead} />
-              <div className="pl-showcase-stack">
-                <DeviceStack
-                  locale={locale}
-                  desktop={showcaseDesktop}
-                  phone={phoneShot(featured)}
-                  screens={mockScreens(featured.slug, locale)}
-                  sizes="(min-width: 1024px) 60vw, 100vw"
-                />
-              </div>
+              {showcaseScreens && showcaseSpots.length ? (
+                <DeviceSpots locale={locale} spots={showcaseSpots} label={site.home.devices.spotsLabel}>
+                  <DeviceStack
+                    locale={locale}
+                    desktop={showcaseDesktop}
+                    phone={phoneShot(featured)}
+                    screens={showcaseScreens}
+                    sizes="(min-width: 1024px) 60vw, 100vw"
+                  />
+                </DeviceSpots>
+              ) : (
+                <div className="pl-showcase-stack">
+                  <DeviceStack
+                    locale={locale}
+                    desktop={showcaseDesktop}
+                    phone={phoneShot(featured)}
+                    screens={showcaseScreens}
+                    sizes="(min-width: 1024px) 60vw, 100vw"
+                  />
+                </div>
+              )}
             </section>
           </div>
         ) : null}

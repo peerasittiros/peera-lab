@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 import type { Locale } from '@/lib/i18n';
 import { RentrollMock } from './RentrollMock';
-import { StocklineMock } from './StocklineMock';
+import { STOCKLINE_SPOTS, StocklineMock } from './StocklineMock';
 
 export interface MockScreens {
   desktop: ReactNode;
@@ -27,4 +27,9 @@ export function mockScreens(slug: string, locale: Locale): MockScreens | undefin
     default:
       return undefined;
   }
+}
+
+/** The `data-spot` names a product's mock marks, for the home page callouts (DeviceSpots). */
+export function mockSpots(slug: string): readonly string[] {
+  return slug === 'stockline' ? STOCKLINE_SPOTS : [];
 }

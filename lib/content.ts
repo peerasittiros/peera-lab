@@ -139,7 +139,15 @@ export const siteSchema = z.object({
     lab: z.object({ title: localized, lead: localized, all: localized }),
     details: z.object({ title: localized, lead: localized }),
     /** The section under the hero that shows the featured product on a laptop and a phone. */
-    devices: z.object({ title: localized, lead: localized }),
+    devices: z.object({
+      title: localized,
+      lead: localized,
+      /** Callouts on the featured product's mock screens, in order. `target` names a `data-spot` in its mock
+       *  (`components/products/mocks`); callouts the mock does not have are left out. */
+      spots: z.array(z.object({ target: z.string().min(1), title: localized, body: localized })).optional(),
+      /** Label for the callout list, such as "Choose a point to see it on the screen". */
+      spotsLabel: localized.optional(),
+    }),
   }),
   /** Copy for the Products and Projects pages. `contactTitle` may contain {name}, replaced by the item's title. */
   collections: z.object({ products: collectionCopy, projects: collectionCopy }),

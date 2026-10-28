@@ -115,14 +115,10 @@
 .mk-phone .mk-notice b { font-size: calc(var(--u) * 17); }
 .mk-phone .mk-notice span { font-size: calc(var(--u) * 14.5); color: var(--mk-ink); }
 
-/* Stockline v2 (ux-v2/stockline.md): app bar with the sample-data tag, the shop badge in the sidebar, content on the
-   surface tint in white cards, the two-pane quick move with the label-strip panel, large phone cards. */
+/* Stockline v2 (ux-v2/stockline.md), as the app is today: no app bar; the shop badge heads the sidebar and the account
+   menu sits at its foot; content on the surface tint in white cards, the two-pane quick move with the label-strip
+   panel, large phone cards under the shop badge. */
 .mk-stockline .mk-num { font-weight: 700; font-variant-numeric: tabular-nums; }
-.mk-stockline .mk-top { display: flex; align-items: center; justify-content: space-between; background: var(--mk-sunken); border-bottom: 1px solid var(--mk-line); }
-.mk-sl-brand { display: flex; align-items: center; }
-.mk-sl-tag { border: 1px solid var(--mk-line); background: var(--mk-surface); color: var(--mk-muted); }
-.mk-sl-bar-end { display: flex; align-items: center; color: var(--mk-muted); }
-.mk-sl-bar-end .is-on { color: var(--mk-ink); font-weight: 600; }
 .mk-searchrow { display: flex; }
 .mk-search, .mk-scan { display: flex; align-items: center; border: 1px solid var(--mk-line-strong); background: var(--mk-surface); }
 .mk-search { flex: 1; min-width: 0; color: var(--mk-muted); }
@@ -137,11 +133,7 @@
 .mk-chip { display: inline-flex; align-items: center; justify-self: end; font-weight: 600; white-space: nowrap; }
 
 /* Laptop: the screen is 600 × 375 units. */
-.mk-stockline.mk-desktop .mk-top { height: calc(var(--u) * 28); padding: 0 calc(var(--u) * 12); }
-.mk-stockline.mk-desktop .mk-sl-brand { gap: calc(var(--u) * 6); font-size: calc(var(--u) * 9); }
-.mk-stockline.mk-desktop .mk-sl-tag { padding: calc(var(--u) * 1.5) calc(var(--u) * 5); border-radius: calc(var(--u) * 3); font-size: calc(var(--u) * 7); }
-.mk-stockline.mk-desktop .mk-sl-bar-end { gap: calc(var(--u) * 10); font-size: calc(var(--u) * 8); }
-.mk-stockline.mk-desktop .mk-side { width: calc(var(--u) * 116); padding: 0 calc(var(--u) * 8) calc(var(--u) * 8); gap: calc(var(--u) * 3); background: var(--mk-surface); }
+.mk-stockline.mk-desktop .mk-side { display: flex; flex-direction: column; width: calc(var(--u) * 116); padding: 0 calc(var(--u) * 8) calc(var(--u) * 6); gap: calc(var(--u) * 3); background: var(--mk-surface); }
 .mk-stockline.mk-desktop .mk-side > span { height: calc(var(--u) * 19); font-size: calc(var(--u) * 7.5); }
 .mk-stockline.mk-desktop .mk-side > span.is-on { box-shadow: inset calc(var(--u) * 2) 0 0 var(--mk-primary); }
 .mk-stockline.mk-desktop .mk-side > .mk-sl-side-shop { display: block; height: auto; margin: 0 calc(var(--u) * -8) calc(var(--u) * 6); padding: calc(var(--u) * 10); border-bottom: 1px solid var(--mk-line); border-radius: 0; }
@@ -188,16 +180,12 @@
 .mk-sl-stepper { display: grid; grid-template-columns: calc(var(--u) * 24) minmax(0, 1fr) calc(var(--u) * 24); gap: calc(var(--u) * 5); }
 .mk-sl-stepper > * { display: flex; align-items: center; justify-content: center; height: calc(var(--u) * 24); border: 1px solid var(--mk-line-strong); border-radius: calc(var(--u) * 4); color: var(--mk-ink); font-size: calc(var(--u) * 10); }
 .mk-sl-chips { display: flex; gap: calc(var(--u) * 5); }
+.mk-sl-chips span.is-on { background: var(--mk-soft); border-color: var(--mk-primary); }
 .mk-sl-chips span { display: flex; align-items: center; height: calc(var(--u) * 17); padding: 0 calc(var(--u) * 7); border: 1px solid var(--mk-line-strong); border-radius: calc(var(--u) * 4); font-size: calc(var(--u) * 7); color: var(--mk-ink); }
 .mk-sl-save { display: flex; align-items: center; justify-content: center; height: calc(var(--u) * 22); border-radius: calc(var(--u) * 4); background: var(--mk-primary); color: var(--mk-on-primary); font-weight: 600; font-size: calc(var(--u) * 7.5); }
 
 /* Phone: the screen is 390 × 830 units. */
-.mk-stockline.mk-phone .mk-status { background: var(--mk-sunken); }
-.mk-stockline.mk-phone .mk-top { height: calc(var(--u) * 56); padding: 0 calc(var(--u) * 20); }
-.mk-stockline.mk-phone .mk-sl-brand { gap: calc(var(--u) * 10); font-size: calc(var(--u) * 18); }
-.mk-stockline.mk-phone .mk-sl-tag { padding: calc(var(--u) * 3) calc(var(--u) * 9); border-radius: calc(var(--u) * 6); font-size: calc(var(--u) * 14); }
-.mk-stockline.mk-phone .mk-sl-bar-end { gap: calc(var(--u) * 22); font-size: calc(var(--u) * 16); }
-.mk-stockline.mk-phone .mk-sl-bar-end .mk-icon { font-size: calc(var(--u) * 24); color: var(--mk-ink); }
+.mk-stockline.mk-phone .mk-status { background: var(--mk-surface); }
 .mk-stockline.mk-phone .mk-main { padding: calc(var(--u) * 20); background: var(--mk-surface); }
 .mk-stockline.mk-phone .mk-shop { gap: calc(var(--u) * 12); margin-bottom: calc(var(--u) * 22); }
 .mk-stockline.mk-phone .mk-logo { width: calc(var(--u) * 44); height: calc(var(--u) * 44); border-radius: calc(var(--u) * 10); font-size: calc(var(--u) * 24); }
@@ -227,3 +215,12 @@
 .mk-stockline.mk-desktop .mk-side .mk-logo { display: flex; height: calc(var(--u) * 20); padding: 0; color: var(--mk-on-primary); }
 .mk-stockline.mk-desktop .mk-side .mk-shop-text { display: grid; height: auto; padding: 0; min-width: 0; }
 .mk-stockline.mk-desktop .mk-side .mk-shop-text b { white-space: normal; line-height: 1.2; }
+
+/* The sidebar foot: the account menu (avatar, name, role) and the collapse control. */
+.mk-sl-foot { display: grid; gap: calc(var(--u) * 3); margin: auto calc(var(--u) * -8) 0; padding: calc(var(--u) * 6) calc(var(--u) * 8) 0; border-top: 1px solid var(--mk-line); }
+.mk-stockline.mk-desktop .mk-sl-foot > span { display: flex; align-items: center; height: calc(var(--u) * 19); padding: 0 calc(var(--u) * 7); gap: calc(var(--u) * 6); font-size: calc(var(--u) * 7.5); color: var(--mk-muted); }
+.mk-stockline.mk-desktop .mk-sl-foot > .mk-sl-account { height: calc(var(--u) * 26); padding: 0 calc(var(--u) * 4); color: var(--mk-muted); }
+.mk-stockline.mk-desktop .mk-sl-avatar { display: flex; align-items: center; justify-content: center; flex: none; width: calc(var(--u) * 18); height: calc(var(--u) * 18); padding: 0; border-radius: calc(var(--u) * 4); background: var(--mk-soft); color: var(--mk-primary); font-size: calc(var(--u) * 7); font-weight: 600; }
+.mk-stockline.mk-desktop .mk-sl-account .mk-shop-text { display: grid; flex: 1; height: auto; padding: 0; }
+.mk-stockline.mk-desktop .mk-sl-account .mk-shop-text b { font-size: calc(var(--u) * 7.5); color: var(--mk-ink); }
+.mk-stockline.mk-desktop .mk-sl-account .mk-shop-text small { font-size: calc(var(--u) * 6.5); }

@@ -31,6 +31,9 @@ const PATHS = {
   plus: 'M12 5v14M5 12h14',
   menu: 'M4 7h16M4 12h16M4 17h16',
   reset: 'M4 12a8 8 0 1 0 2.3-5.7M4 4v4h4',
+  gear: 'M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM12 2v3M12 19v3M4.9 4.9 7 7M17 17l2.1 2.1M2 12h3M19 12h3M4.9 19.1 7 17M17 7l2.1-2.1',
+  sidebar: 'M4 4h16v16H4zM9 4v16M15 10l-2 2 2 2',
+  updown: 'M8 9l4-4 4 4M8 15l4 4 4-4',
 } as const;
 
 export type MockIconName = keyof typeof PATHS;
